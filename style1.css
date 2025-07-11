@@ -622,6 +622,9 @@ footer .subscribe a.yellow:hover{
   nav .navigation ul li a {
     color: white;
   }
+  nav{
+    background-color: white;
+  }
   #home p{
     width: 90%;
   }
@@ -693,6 +696,9 @@ footer .subscribe a.yellow:hover{
     width: 70px;
     height: 70px;
   }
+  nav{
+    background-color: white;
+  }
   #registration{
     display: flex;
     flex-direction: column;
@@ -734,5 +740,8 @@ footer .subscribe a.yellow:hover{
    nav img{
     width: 70px;
     height: 70px;
+  }
+  nav{
+    background-color: white;
   }
 }
