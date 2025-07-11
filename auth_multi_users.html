@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Connexion</title>
+
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> 
+
+        <link rel="stylesheet" href="style1.css">
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+
+    <body>
+        <!-- Navigation -->
+        <nav>
+            <img src="images/logo.svg" alt="">
+            <div class="navigation">
+               <ul>
+                    <i id="menu-close" class="fas fa-times"></i>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blogue</a></li>
+                    <li><a href="course.html">Courses</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <img id="menu-btn" src="images/menu.png" alt="">
+            </div>
+        </nav>
+
+        <section id="about-home">
+            <h2>Get Connected to your Cursa Academia Account</h2>
+        </section>
+        
+       <div id="signup-box">
+           
+          <input type="email" id="signup-email" placeholder="Adresse email" />
+          <input type="password" id="signup-password" placeholder="Mot de passe" />
+          <input type="text" id="signup-num" placeholder="Numéro de téléphone" />
+          <button id="signup-btn" class="normal">Créer un compte</button>
+          <p id="signup-message" style="color: red;"></p>
+      </div>
+      
+
+    
+        <!-- Footer -->
+        <footer>
+            <section id="footer">
+                <div class="footer-col">
+                    <h3>Top Products</h3>
+                    <li>Managed Website</li>
+                    <li>Manage Reputation</li>
+                    <li>Power Tools</li>
+                    <li>Marketing Service</li>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Guides</h3>
+                    <li>Managed Website</li>
+                    <li>Manage Reputation</li>
+                    <li>Power Tools</li>
+                    <li>Marketing Service</li>
+                </div>
+
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <li>Managed Website</li>
+                    <li>Manage Reputation</li>
+                    <li>Power Tools</li>
+                    <li>Marketing Service</li>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Assistance</h3>
+                    <li>Subscribe</li>
+                    <li>Unsubscribe</li>
+                    <li>Privacy Policy</li>
+                    <li>Terms of Service</li>
+                </div>
+
+                <div class="footer-col">
+                    <h3>News letter</h3>
+                    <p>Subscribe to our newsletter for the latest updates.</p>
+                    <div class="subscribe">
+                        <input type="text" placeholder="Enter your email">
+                        <a href="#" class="yellow">SUBSCRIBE</a>
+                    </div>
+                </div>
+
+                <div class="copyright">
+                <p>© 2025 TECHNOWEB. All rights reserved.</p>
+                <div class="pro-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            </section>
+
+        </footer>
+       
+        <script>
+
+            // Navaigation Bar
+            let menuBtn = document.getElementById('menu-btn');
+            let menuClose = document.getElementById('menu-close');
+            
+            menuBtn.addEventListener('click', function() {
+                document.querySelector('.navigation').classList.add('active');
+            });
+            menuClose.addEventListener('click', function() {
+                document.querySelector('.navigation').classList.remove('active');
+            });
+
+        </script>
+        <script type="module" src="auth_multi.js"></script>
+            
+
+
+    </body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>École Africaine de Logique et Analyse du Langage A propos</title>
+
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> 
+
+        <link rel="stylesheet" href="style1.css">
+
+    </head>
+
+    <body>
+
+        <!-- Navigation -->
+        <nav>
+            <img src="images/logo.svg" alt="">
+            <div class="navigation">
+               <ul>
+                    <i id="menu-close" class="fas fa-times"></i>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="#">Blogue</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <img id="menu-btn" src="images/menu.png" alt="">
+            </div>
+        </nav>
+        <!-- Home -->
+        <section id="about-home">
+            <h2>A propos de l'École Africaine de Logique et Analyse du Langage</h2>
+        </section>
+        <!-- Container -->
+         <section id="about-container">
+           
+            <div class="about-text">
+                <h2>Bienvenu à l'École Africaine de Logique et Analyse du Langage , Enhance your skils with best Online Courses</h2>
+                <p>You can Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum fugit quam sunt aspernatur eos </p>
+                <div class="about-fe">
+                    <img src="images/fe1.png" alt="">
+                    <div class="fe-text">
+                        <h5>400+ Courses</h5>
+                        <p>You can do it from the beginning to the end without any issue in under our site</p>
+                    </div>
+                </div>
+
+                <div class="about-fe">
+                    <img src="images/fe2.png" alt="">
+                    <div class="fe-text">
+                        <h5>Lifetime Access</h5>
+                        <p>You can do it from the beginning to the end without any issue in under our site</p>
+                    </div>
+                </div>
+            </div>
+             <div class="about-img">
+                <img src="images/a.png" alt="">
+            </div>
+         </section>
+
+        <!-- features -->
+        <section id="features">
+            <h1>Awesome features</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur </p>
+            <div class="fea-base">
+                <div class="fea-box">
+                    <i class="fas fa-graduation-cap"></i> 
+                    <h3>Scholarship Facility</h3>  
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius esse minus cupiditate.</p>
+                </div>
+                <div class="fea-box">
+                    <i class="fas fa-file-certificate"></i> 
+                    <h3>Dell Online Course</h3>  
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius esse minus cupiditate.</p>
+                </div>
+                <div class="fea-box">
+                    <i class="fas fa-award"></i> 
+                    <h3>Global Certification</h3>  
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius esse minus cupiditate.</p>
+                </div>
+            </div>
+        </section>
+
+        <!--Trust-->
+        <section id="trust">
+            <h1>Trusted By</h1>
+            <p>We are Trusted By Millions of students and Companies acros the world</p>
+            <div class="trust-img">
+                <img src="images/trust (1).png" alt="">
+                <img src="images/trust (2).png" alt="">
+                <img src="images/trust (3).png" alt="">
+                <img src="images/trust (4).png" alt="">
+                <img src="images/trust (5).png" alt="">
+                <img src="images/trust (6).png" alt="">
+            </div>
+        </section>
+    
+        <!-- Footer -->
+        <footer>
+            <section id="footer">
+                <div class="footer-col">
+                    <h3>Top Products</h3>
+                    <li>Managed Website</li>
+                    <li>Manage Reputation</li>
+                    <li>Power Tools</li>
+                    <li>Marketing Service</li>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Guides</h3>
+                    <li>Managed Website</li>
+                    <li>Manage Reputation</li>
+                    <li>Power Tools</li>
+                    <li>Marketing Service</li>
+                </div>
+
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <li>Managed Website</li>
+                    <li>Manage Reputation</li>
+                    <li>Power Tools</li>
+                    <li>Marketing Service</li>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Assistance</h3>
+                    <li>Subscribe</li>
+                    <li>Unsubscribe</li>
+                    <li>Privacy Policy</li>
+                    <li>Terms of Service</li>
+                </div>
+
+                <div class="footer-col">
+                    <h3>News letter</h3>
+                    <p>Subscribe to our newsletter for the latest updates.</p>
+                    <div class="subscribe">
+                        <input type="text" placeholder="Enter your email">
+                        <a href="#" class="yellow">SUBSCRIBE</a>
+                    </div>
+                </div>
+
+                <div class="copyright">
+                <p>© 2025 E.A.L.A. All rights reserved.</p>
+                <div class="pro-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            </section>
+
+        </footer>
+       
+        <script>
+
+            // Navaigation Bar
+            let menuBtn = document.getElementById('menu-btn');
+            let menuClose = document.getElementById('menu-close');
+            
+            menuBtn.addEventListener('click', function() {
+                document.querySelector('.navigation').classList.add('active');
+            });
+            menuClose.addEventListener('click', function() {
+                document.querySelector('.navigation').classList.remove('active');
+            });
+
+        </script>
+
+
+    </body>
+
+</html>
