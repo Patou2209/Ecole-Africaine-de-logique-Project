@@ -3,40 +3,45 @@
   justify-content: space-between;
   gap: 20px;
   padding: 20px;
+  
 }
-#article-container .article-princ{
-  width: 65%;
+.article-princ{
   padding: 10px;
-  order: 1;
+  
 }
-#article-container .article-princ span{
+.article-princ span{
   text-align: left;
   font-size: 12px;
   color: #757373;
 }
-#article-container .article-princ h2{
+.article-princ h2{
   text-align: left;
   font-size: 17px;
   color: rgb(45, 45, 46);
   margin: 15px 0;
 }
-#article-container .article-princ p{
+.article-princ p{
   text-align: justify;
   color: #3b3b3b;
   font-size: 15px;
 }
-#article-container .article-cot{
-  width: 35%;
+.article-cot{
+  width: 40%;
   padding: 10px;
-  order: 2;
+  
 }
-#article-container .article-cot h4{
+.article-cot img{
+  width: 250px;
+  height: 200px;
+  margin-top:15px;
+}
+.article-cot h4{
   padding: 15px 0;
 }
-#article-container .article-cot h6{
+.article-cot h6{
   padding: 10px 0;
 }
-#article-container .article-cot p{
+.article-cot p{
   text-align: justify;
 }
 #read-more{
