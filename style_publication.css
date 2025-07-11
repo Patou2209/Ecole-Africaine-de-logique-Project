@@ -1,0 +1,135 @@
+#article-container{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+}
+#article-container .article-main{
+  width: 65%;
+  padding: 10px;
+}
+#article-container .article-main span{
+  text-align: left;
+  font-size: 12px;
+  color: #757373;
+}
+#article-container .article-main h2{
+  text-align: left;
+  font-size: 17px;
+  color: rgb(45, 45, 46);
+  margin: 15px 0;
+}
+#article-container .article-main p{
+  text-align: justify;
+  color: #3b3b3b;
+  font-size: 15px;
+}
+#article-container .article-side{
+  width: 35%;
+  padding: 10px;
+}
+#article-container .article-side h4{
+  padding: 15px 0;
+}
+#article-container .article-side h6{
+  padding: 10px 0;
+}
+#article-container .article-side p{
+  text-align: justify;
+}
+#read-more{
+  padding: 10px 15px;
+  color: white;
+  background-color: rgb(21, 21, 100);
+  margin:15px 0;
+  border: none;
+  transition: 0.3s ease-in-out;
+}
+#read-more:hover{
+  padding: 10px 15px;
+  color: rgb(21, 21, 100);
+  background-color: white;
+  border: 1px solid rgb(21, 21, 100);
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 180px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    
+}
+
+.dropdown-menu li a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    
+}
+
+/* Affiche le menu quand actif */
+.dropdown.active .dropdown-menu {
+    display: block;
+}
+.dropdown-menu {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dropdown.active .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+}
+@media (max-width:769px){
+  #article-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #article-container .article-main{
+  width: 100%;
+  padding: 10px;
+}
+
+}
+#article-container .article-side{
+  width: 100%;
+  padding: 10px;
+}
+@media (max-width:475px){
+  #article-container .article-main{
+  width: 100%;
+  padding: 10px;
+}
+
+}
+#article-container .article-side{
+  width: 100%;
+  padding: 10px;
+}
+
+@media (max-width:385px){
+  #article-container .article-main{
+  width: 100%;
+  padding: 10px;
+}
+
+}
+#article-container .article-side{
+  width: 100%;
+  padding: 10px;
+}
+
