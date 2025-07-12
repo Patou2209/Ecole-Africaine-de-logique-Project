@@ -101,6 +101,86 @@
     visibility: visible;
     opacity: 1;
 }
+
+#comite{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 25px;
+}
+#comite .profil{
+  width: 350px;
+  padding: 10px;
+  margin: 20px;
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+}
+#comite .profil img{
+  width: 95%;
+  height: 350px;
+  margin-bottom: 15px;
+}
+#comite .profil h3{
+  text-align: center;
+  color: rgb(21, 21, 100);
+}
+#comite .profil h4{
+  text-align: center;
+  color: #FDC93B;
+  margin: 15px 0;
+}
+#comite .profil p{
+  text-align: justify;
+}
+.active-tab {
+  color: #FDC93B !important;
+}
+#page{
+  background-image: linear-gradient(
+    rgba(9, 5, 54, 0.3),
+    rgba(5, 4, 46, 0.7)
+  ), url("images/tableau\ editorial.jpg");
+  width: 100%;
+  height: 70vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 40px;
+  position: relative;
+}
+#containts{
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+#containts h3{
+  color: #FDC93B;
+  margin: 20px 0;
+  text-align: left;
+}
+#containts li{
+  list-style-type: square;
+  color: #3b3b3b ;
+  margin-left: 30px;
+}
+#containts ul{
+  margin: 25px 0;
+}
+#containts p{
+  text-align: justify;
+}
+#containts h4{
+  color: rgb(21, 21, 100);
+  margin: 15 0 10px 0;
+}
+
+#page h2{
+  color: white;
+}
+
 @media (max-width:769px){
   #article-container {
     display: flex;
