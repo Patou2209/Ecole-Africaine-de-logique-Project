@@ -115,7 +115,8 @@ nav img{
 #login-btn {
     text-decoration: none;
     font-size: 0.9rem;
-    padding: 13px 35px;
+    padding: 13px 20px;
+    width: 150px;
     background-color: white;
     font: 600;
     border-radius: 5px;

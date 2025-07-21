@@ -38,26 +38,50 @@
                     <li><a href="#">Recherches</a></li>
                     <li><a href="#">Chercheurs</a></li>
                     <li><a href="tableau_edit.html">Tableau Editorial</a></li>
-                    <li><a href="#">Contributeurs</a></li>
+                    <li><a href="contributeur.html">Contributeurs</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
                 <img id="menu-btn" src="images/menu.png" alt="">
             </div>
         </nav>
-
-        <section id="about-home">
-            <h2>Connexion</h2>
-        </section>
         
-        <div id="login-box">
-            
-            <input type="email" id="email" placeholder="Adresse email">
-            <input type="password" id="password" placeholder="Mot de passe">
-            <button id="login-btn" class="normal">Se connecter</button>
-            <p id="message" style="color: red;"></p>
+
+        <div class="posting">
+            <h3 class="connecteH3">Bienvenue, <span id="user-name"></span> !</h3>
+           
+ 
+            <div class="search">
+                    <i class="fa fa-search" id="search-icon" title="Recherche"></i>
+                    <input type="text" id="search-bar" placeholder="Recherche" class="form-control" >
+                <!--<div class="filtre">
+                    <select id="sort-ads" class="form-control">
+                        <option value="" title="Tous les produits"></option>
+                        <option value="Electronics" title="Produits électroniques">Electronics</option>
+                        <option value="Habillement" title="Vêtements et accessoires">Habillement</option>
+                        <option value="Voiture" title="Véhicules et accessoires">Voiture</option>
+                        <option value="Immobilier" title="Biens immobiliers">Immobilier</option>
+                    </select>
+                </div>-->
+            </div> 
+
+            <div class="posting-form">
+                <h4 style="text-align: center;"> Publier un Article </h4>
+                <form id="article_form">
+                <input type="text" id="art-date" class="form-control" placeholder="Date: ex; 22/09/1998" required>
+                <input type="text" id="art-volt" class="form-control" placeholder="Volume: ex; Volume: 10, Numéro: 05" required>
+                <input type="text" id="art-title" class="form-control" placeholder="Titre de l'article" required>
+                <input type="file" id="art-pdf" class="form-control" accept="application/pdf" required>
+                <textarea id="art-containt" class="form-control" placeholder="Le Contenu " required></textarea>
+                <button type="submit" class="normal">Publier</button>
+                </form>
+            </div>
+            <h4 style="text-align: center;"> Articles Publiés </h4>
         </div>
 
-    
+
+        <div id="article-container" > <!--here, are injected data from the DOM--></div>
+
+
         <!-- Footer -->
         <footer>
             <section id="footer">
@@ -85,13 +109,7 @@
                     <li>Marketing Service</li>
                 </div>
 
-                <div class="footer-col">
-                    <h3>Assistance</h3>
-                    <li>Subscribe</li>
-                    <li>Unsubscribe</li>
-                    <li>Privacy Policy</li>
-                    <li>Terms of Service</li>
-                </div>
+                
 
                 <div class="footer-col">
                     <h3>News letter</h3>
@@ -103,7 +121,7 @@
                 </div>
 
                 <div class="copyright">
-                <p>© 2025 TECHNOWEB. All rights reserved.</p>
+                <p>© 2025 E.A.L.A. All rights reserved.</p>
                 <div class="pro-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -114,25 +132,8 @@
             </section>
 
         </footer>
-       
-        <script>
-
-            // Navaigation Bar
-            let menuBtn = document.getElementById('menu-btn');
-            let menuClose = document.getElementById('menu-close');
-            
-            menuBtn.addEventListener('click', function() {
-                document.querySelector('.navigation').classList.add('active');
-            });
-            menuClose.addEventListener('click', function() {
-                document.querySelector('.navigation').classList.remove('active');
-            });
-
-        </script>
-        <script type="module" src="connect.js"></script>
-            
+        <script type="module" src="articles.js"></script>
 
 
     </body>
-
 </html>

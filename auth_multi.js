@@ -6,18 +6,18 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebas
     } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
     import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
 
-    const firebaseConfig = {
-      databaseURL: "https://cursa-academia-default-rtdb.asia-southeast1.firebasedatabase.app/",
-      apiKey: "AIzaSyCKfjWixcRQQsJSfEpy6j8iHCCgw5A2Pbs",
-      authDomain: "cursa-academia.firebaseapp.com",
-      projectId: "cursa-academia",
-      storageBucket: "cursa-academia.firebasestorage.app",
-      messagingSenderId: "934135588662",
-      appId: "1:934135588662:web:04780bc2176cbd2d82f597"
+   const appSettings = {
+    databaseURL: "https://ecole-africaine-default-rtdb.asia-southeast1.firebasedatabase.app/",
+    apiKey: "AIzaSyBpBDRdbCzQ6KWFkFO2UK8K_rbTbHHCwF0",
+    authDomain: "ecole-africaine.firebaseapp.com",
+    projectId: "ecole-africaine",
+    storageBucket: "ecole-africaine.firebasestorage.app",
+    messagingSenderId: "740167043479",
+    appId: "1:740167043479:web:78a965e3f34f44920a1cd2"
 
   };
 
-    const app = initializeApp(firebaseConfig);
+    const app = initializeApp(appSettings);
     const auth = getAuth(app);
 
     // Inscription

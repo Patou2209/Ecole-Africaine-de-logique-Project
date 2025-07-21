@@ -1,13 +1,26 @@
 #article-container{
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(620px, 1fr));
   padding: 20px;
   
 }
+.article-content {
+  max-height: 60px;
+  overflow: hidden;
+  transition:  0.4s ease;
+}
+.article-content.expanded {
+  max-height: auto;
+  transition: 0.4s ease;
+}
 .article-princ{
+  width: 620px;
   padding: 10px;
   
+}
+.expanded {
+  max-height: none;
+  overflow: visible;
 }
 .article-princ span,
 .article-cot span{
@@ -45,6 +58,20 @@
 .article-cot p{
   text-align: justify;
 }
+.pdf_link {
+  margin: 10px 0 0 0;
+}
+.pdf_link a {
+  color: #FDC93B;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s ease-in-out;
+}
+.pdf_link a:hover {
+  color: #5f4d1c;
+  font-weight: 700;
+}
+
 #read-more{
   padding: 10px 15px;
   color: white;
@@ -179,6 +206,9 @@
 
 #page h2{
   color: white;
+}
+#red, #green{
+  margin-top: 20px;
 }
 
 @media (max-width:769px){

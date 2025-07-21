@@ -1,0 +1,76 @@
+.posting{
+  display: flex;
+  flex-direction: column;
+  padding: 8rem 1rem 1rem 1rem;
+}
+.connecteH3{
+  margin: 0 0 1rem 0;
+  font-family: "Robonto" sans-serif;
+  font-size: 25px;
+  color: rgb(21, 21, 100);
+}
+#user-name{
+  font-size: 25px;
+  color: #FDC93B;
+}
+.search{
+  width: 100%;
+}
+.search #search-icon,
+#search-bar, #sort-ads{
+  padding: 10px;
+}
+h4{
+  color: rgb(21, 21, 100);
+}
+#article_form{
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  align-items: center;
+  margin: 1rem auto;
+}
+#article_form input{
+  padding: 10px;
+  border: 1px solid rgb(21, 21, 100);
+  margin: 10px;
+  
+}
+#article_form textarea{
+  width: 100%;
+  height: 200px;
+  margin: 10px;
+  padding: 10px;
+}
+.normal{
+  padding: 10px;
+  color: white;
+  background-color: rgb(21, 21, 100);
+  border: none;
+  width: 120px;
+  margin-left: 10px;
+}
+.normal:hover{
+  background-color: #FDC93B;
+  color: rgb(21, 21, 100);
+}
+#red{
+  
+  background-color: #FDC93B;
+  
+}
+.toggle-btn{
+ padding: 10px;
+  color: white;
+  background-color: rgb(21, 21, 100);
+  border: none;
+  width: 120px;
+  margin-left: 10px;
+  margin: 20px 0; 
+}
+.toggle-btn:hover{
+  background-color: #FDC93B;
+  color: rgb(21, 21, 100);
+}
+
+
