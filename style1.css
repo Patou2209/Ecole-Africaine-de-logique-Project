@@ -465,6 +465,18 @@ footer .subscribe a.yellow:hover{
   align-items: center;
   padding: 4vw 4vw 2vw 4vw;
 }
+#about-container p{
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: justify;
+}
+#about-container ul{
+  padding: 10px 0 0 25px;
+}
+#about-container ul li{
+  list-style: square;
+  padding: 5px 0;
+}
 #about-container .about-img{
   width: 60%;
   padding: 20px;
