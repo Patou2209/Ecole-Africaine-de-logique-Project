@@ -21,6 +21,14 @@ const database = getDatabase(app);
 const adsRef = ref(database, "che");
 const auth = getAuth(app);
 
+let editingAdId = null;
+
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    window.location.href = "chercheurs.html";
+    return;
+  }
+  document.getElementById("user-name").textContent = user.email;
 
 
 const adForm = document.getElementById("chercheur_form");
