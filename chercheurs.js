@@ -1,5 +1,3 @@
-
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
 import { getDatabase, ref, push, onValue, remove, update, get, child } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
@@ -20,7 +18,7 @@ import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/fi
 
 const app = initializeApp(appSettings);
 const database = getDatabase(app);
-const adsRef = ref(database, "ads");
+const adsRef = ref(database, "che");
 const auth = getAuth(app);
 
 let editingAdId = null;
@@ -32,22 +30,16 @@ onAuthStateChanged(auth, (user) => {
   }
   document.getElementById("user-name").textContent = user.email;
 
-  document.getElementById("logout-btn").addEventListener("click", () => {
-    signOut(auth).then(() => {
-      window.location.href = "index.html";
-    });
-  });
 
-const adForm = document.getElementById("article_form");
+const adForm = document.getElementById("chercheur_form");
 
   adForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const date = document.getElementById("art-date").value;
-    const volume = document.getElementById("art-volt").value;
-    const title = document.getElementById("art-title").value;
-    const containt = document.getElementById("art-containt").value;
-    const pdfInput = document.getElementById("art-pdf").files[0];
+    const name = document.getElementById("chercheur-name").value;
+    const field = document.getElementById("chercheur-field").value;
+    const imageInput = document.getElementById("chercheur-image").files[0];
+    const description = document.getElementById("chercheur-description").value;
 
     const userId = auth.currentUser.uid;
     const dbRef = ref(getDatabase());
@@ -57,25 +49,24 @@ const adForm = document.getElementById("article_form");
     //  number = userSnap.val().number || "";
     //}
 
-    const saveAd = async (pdfData) => {
+    const saveAd = async (imageData) => {
       const ad = {
-        date,
-        volume,
-        title,
-        containt,
-        pdf: pdfData || null,
+        name,
+        field,
+        image: imageData,
+        description,
         userEmail: user.email,
         createdAt: Date.now(),
       };
 
       // Validate form fields
-      if (!date || !volume || !title || !pdfData || !containt) {
+      if (!name || !field || !imageInput || !description) {
         alert("Remplissez toutes les cases Svp!.");
         return;
       } 
 
       if (editingAdId) {
-        await update(ref(database, `ads/${editingAdId}`), ad);
+        await update(ref(database, `che/${editingAdId}`), ad);
         editingAdId = null;
       } else {
         await push(adsRef, ad);
@@ -85,17 +76,18 @@ const adForm = document.getElementById("article_form");
       displayAds();
     };
 
-    if (pdfInput) {
+    if (imageInput) {
       const reader = new FileReader();
       reader.onload = () => saveAd(reader.result);
-      reader.readAsDataURL(pdfInput);
+      reader.readAsDataURL(imageInput);
     } else {
       saveAd();
     }
+    console.log("Ad saved successfully");
   });
 
   function displayAds() {
-    const adsContainer = document.getElementById("article-container");
+    const adsContainer = document.getElementById("chercheur-container");
     adsContainer.innerHTML = "";
 
     onValue(adsRef, (snapshot) => {
@@ -105,13 +97,12 @@ const adForm = document.getElementById("article_form");
         const adId = childSnap.key;
         if (ad.userEmail === user.email) {
           const adBox = document.createElement("div");
-          adBox.classList.add("article-princ");
+          adBox.classList.add("profil");
           adBox.innerHTML = `
-            <span>Article Publié le : ${ad.date}  | ${ad.volume}</span>
-            <h2>${ad.title}</h2>
-            <p class="article-content">${ad.containt}</p>
-            <p class="pdf_link"><a href="${ad.pdf}" target="_blank">Voir le PDF</a></p>
-            <button class="toggle-btn">Voir plus</button>
+            <img src="${ad.image}" alt="">
+            <h3>${ad.name}</h3>
+            <h4>${ad.field}</h4>
+            <p>${ad.description}</p>
             <button class="normal" id="green" onclick="editAd('${adId}')">Modifier</button>
             <button class="normal" id="red" onclick="deleteAd('${adId}')">Supprimer</button>
           `;
@@ -122,17 +113,17 @@ const adForm = document.getElementById("article_form");
   }
 
   window.deleteAd = async function(adId) {
-    await remove(ref(database, `ads/${adId}`));
+    await remove(ref(database, `che/${adId}`));
   };
 
   window.editAd = async function(adId) {
-    const adSnap = await get(child(ref(database), `ads/${adId}`));
+    const adSnap = await get(child(ref(database), `che/${adId}`));
     if (adSnap.exists()) {
       const ad = adSnap.val();
-      document.getElementById("art-date").value = ad.date;
-      document.getElementById("art-volt").value = ad.volume;
-      document.getElementById("art-title").value = ad.title;
-      document.getElementById("art-containt").value = ad.containt;
+      document.getElementById("chercheur-name").value = ad.name;
+      document.getElementById("chercheur-field").value = ad.field;
+      document.getElementById("chercheur-image").value = ad.image ;
+      document.getElementById("chercheur-description").value = ad.description;
       editingAdId = adId;
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -141,17 +132,10 @@ const adForm = document.getElementById("article_form");
   displayAds();
 });
 
-  //toggleBtn Voir plus clicked
-  document.getElementById("article-container").addEventListener("click", function (e) {
-  if (e.target.classList.contains("toggle-btn")) {
-    const btn = e.target;
-    const content = btn.parentElement.querySelector(".article-content");
-    content.classList.toggle("expanded");
-    btn.textContent = content.classList.contains("expanded") ? "Voir moins" : "Voir plus";
-  }
-});
 
 
-  
+///////////////////////////////////////// La Partie concenant le Chercheur////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   
         

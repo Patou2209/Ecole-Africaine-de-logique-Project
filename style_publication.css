@@ -129,33 +129,33 @@
     opacity: 1;
 }
 
-#comite{
+#chercheur-container{
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
   padding: 25px;
 }
-#comite .profil{
+#chercheur-container .profil{
   width: 350px;
   padding: 10px;
   margin: 20px;
   box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
 }
-#comite .profil img{
+#chercheur-container .profil img{
   width: 95%;
   height: 350px;
   margin-bottom: 15px;
 }
-#comite .profil h3{
+#chercheur-container .profil h3{
   text-align: center;
   color: rgb(21, 21, 100);
 }
-#comite .profil h4{
+#chercheur-container .profil h4{
   text-align: center;
   color: #FDC93B;
   margin: 15px 0;
 }
-#comite .profil p{
+#chercheur-container .profil p{
   text-align: justify;
 }
 .active-tab {

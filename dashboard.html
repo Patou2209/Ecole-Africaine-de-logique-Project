@@ -5,55 +5,45 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>École Africaine de Logique et Analyse du Langage</title>
+        <title>Tableau de Bord Principal</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> 
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="style_publication.css">
         <link rel="stylesheet" href="dashboard.css">
+
+
         <link rel="stylesheet" href="style1.css">
 
     </head>
 
     <body>
 
-        
-            
-
+        <!-- Navigation -->
         <nav>
             <img src="images/ECOLE_AFRICAINE_LOGO-removebg-preview.png" alt="">
             <div class="navigation">
                <ul>
                     <i id="menu-close" class="fas fa-times"></i>
                     <li><a href="index.html" >Acceuil</a></li>
-                    <li><a href="about.html">A propos</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">Protocole de rédaction<i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Droit d'Auteur & Licence</a></li>
-                            <li><a href="#">Repository policy</a></li>
-                            <li><a href="#">Politique de dépistage de plagiat</a></li>
-                            <li><a href="#">Politique d'archives</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Recherches</a></li>
-                    <li><a href="#">Chercheurs</a></li>
-                    <li><a href="tableau_edit.html">Tableau Editorial</a></li>
-                    <li><a href="contributeur.html">Contributeurs</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="chercheurs_dash.html">Publier Un Chercheur</a></li>
                 </ul>
                 <img id="menu-btn" src="images/menu.png" alt="">
             </div>
         </nav>
+
+        <section id="about-home">
+            <h2>Tableau de Bord Administrateur</h2>
+        </section>
         
 
         <div class="posting">
             <h3 class="connecteH3">Bienvenue, <span id="user-name"></span> !</h3>
            
  
-            <div class="search">
+           <!-- <div class="search">
                     <i class="fa fa-search" id="search-icon" title="Recherche"></i>
                     <input type="text" id="search-bar" placeholder="Recherche" class="form-control" >
-                <!--<div class="filtre">
+                <div class="filtre">
                     <select id="sort-ads" class="form-control">
                         <option value="" title="Tous les produits"></option>
                         <option value="Electronics" title="Produits électroniques">Electronics</option>
@@ -61,8 +51,8 @@
                         <option value="Voiture" title="Véhicules et accessoires">Voiture</option>
                         <option value="Immobilier" title="Biens immobiliers">Immobilier</option>
                     </select>
-                </div>-->
-            </div> 
+                </div>
+            </div> -->
 
             <div class="posting-form">
                 <h4 style="text-align: center;"> Publier un Article </h4>
@@ -80,7 +70,6 @@
 
 
         <div id="article-container" > <!--here, are injected data from the DOM--></div>
-
 
         <!-- Footer -->
         <footer>

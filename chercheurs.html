@@ -5,10 +5,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>École Africaine de Logique et Analyse du Langage</title>
+        <title>Chercheurs</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> 
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="style_publication.css">
+        <link rel="stylesheet" href="dashboard.css">
 
 
         <link rel="stylesheet" href="style1.css">
@@ -23,7 +24,9 @@
             <div class="navigation">
                <ul>
                     <i id="menu-close" class="fas fa-times"></i>
-                    <li><a href="index.html">Acceuil</a></li>
+                    <li><a href="index.html" >Acceuil</a></li>
+                    <li><a href="#" class="active-tab">Chercheurs</a></li>
+                    <li><a href="contributeur.html">Contributeurs</a></li>
                     <li><a href="about.html">A propos</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">Protocole de rédaction<i class="fas fa-chevron-down"></i></a>
@@ -35,9 +38,6 @@
                         </ul>
                     </li>
                     <li><a href="#">Recherches</a></li>
-                    <li><a href="#">Chercheurs</a></li>
-                    <li><a href="#" class="active-tab">Tableau Editorial</a></li>
-                    <li><a href="contributeur.html">Contributeurs</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
                 <img id="menu-btn" src="images/menu.png" alt="">
@@ -47,39 +47,12 @@
         <!-- Home -->
         <section id="page">
             
-            <h2>Tableau Editorial </h2>
+            <h2>Chercheurs </h2>
             
         </section>
 
         
-        <section id="comite">
-          <div class="profil">
-            <img src="images/unk.jpg" alt="">
-            <h3>Joe Rogan</h4>
-            <h4>Role au sein de l'Ecole</h4>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, molestiae error repellat animi et natus tempore aut? Quas, soluta accusamus iure sunt inventore neque beatae officiis. Necessitatibus itaque cumque animi.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, molestiae error repellat animi et natus tempore aut? Quas, soluta accusamus iure sunt inventore neque beatae officiis. Necessitatibus itaque cumque animi.
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, molestiae error repellat animi et natus tempore aut? Quas, soluta accusamus iure sunt inventore neque beatae officiis. Necessitatibus itaque cumque animi.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, molestiae error repellat animi et natus tempore aut? Quas, soluta accusamus iure sunt inventore neque beatae officiis. Necessitatibus itaque cumque animi.
-            </p>
-          </div>
-
-           <div class="profil">
-            <img src="images/unk.jpg" alt="">
-            <h3>Joe Rogan</h4>
-            <h4>Role au sein de l'Ecole</h4>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, molestiae error repellat animi et natus tempore aut? Quas, soluta accusamus iure sunt inventore neque beatae officiis. Necessitatibus itaque cumque animi.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, molestiae error repellat animi et natus tempore aut? Quas, soluta accusamus iure sunt inventore neque beatae officiis. Necessitatibus itaque cumque animi.
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, molestiae error repellat animi et natus tempore aut? Quas, soluta accusamus iure sunt inventore neque beatae officiis. Necessitatibus itaque cumque animi.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, molestiae error repellat animi et natus tempore aut? Quas, soluta accusamus iure sunt inventore neque beatae officiis. Necessitatibus itaque cumque animi.
-            </p>
-          </div>
-
-           <div class="profil">
-            <img src="images/unk.jpg" alt="">
-            <h3>Joe Rogan</h4>
-            <h4>Role au sein de l'Ecole</h4>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, molestiae error repellat animi et natus tempore aut? Quas, soluta accusamus iure sunt inventore neque beatae officiis. Necessitatibus itaque cumque animi.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, molestiae error repellat animi et natus tempore aut? Quas, soluta accusamus iure sunt inventore neque beatae officiis. Necessitatibus itaque cumque animi.
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, molestiae error repellat animi et natus tempore aut? Quas, soluta accusamus iure sunt inventore neque beatae officiis. Necessitatibus itaque cumque animi.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, molestiae error repellat animi et natus tempore aut? Quas, soluta accusamus iure sunt inventore neque beatae officiis. Necessitatibus itaque cumque animi.
-            </p>
-          </div>
-        </section>
+         <div id="chercheur-container" > <!--here, are injected data from the DOM--></div>
                 
           
 
@@ -145,7 +118,51 @@
             </section>
 
         </footer>
-       
+       <script type="module" src="chercheurs.js"></script>
+       <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+            import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
+
+            // Configuration Firebase
+            const appSettings = {
+            databaseURL: "https://ecole-africaine-default-rtdb.asia-southeast1.firebasedatabase.app/",
+            apiKey: "AIzaSyBpBDRdbCzQ6KWFkFO2UK8K_rbTbHHCwF0",
+            authDomain: "ecole-africaine.firebaseapp.com",
+            projectId: "ecole-africaine",
+            storageBucket: "ecole-africaine.firebasestorage.app",
+            messagingSenderId: "740167043479",
+            appId: "1:740167043479:web:78a965e3f34f44920a1cd2"
+            };
+
+            // Initialiser Firebase
+            const app = initializeApp(appSettings);
+            const database = getDatabase(app);
+            const adsRef = ref(database, "che");
+
+            // Afficher les annonces dans le conteneur
+            function displayAds() {
+            const adsContainer = document.getElementById("chercheur-container");
+            adsContainer.innerHTML = "";
+
+            onValue(adsRef, (snapshot) => {
+                adsContainer.innerHTML = ""; // Vider avant de réafficher
+                snapshot.forEach(childSnap => {
+                const ad = childSnap.val();
+                const adBox = document.createElement("div");
+                adBox.classList.add("profil");
+                adBox.innerHTML = `
+                    <img src="${ad.image}" alt="">
+                    <h3>${ad.name}</h3>
+                    <h4>${ad.field}</h4>
+                    <p>${ad.description}</p>
+                `;
+                adsContainer.appendChild(adBox);
+                });
+                
+            });
+            }
+            displayAds();
+        </script>
         <script>
 
             // Navaigation Bar
@@ -160,10 +177,7 @@
             });
 
             // icone log
-            let icone = document.getElementById("icone-user");
-            icone.addEventListener('click', function(){
-               window.location.href = "connexion.html";
-            })
+            
 
         </script>
 

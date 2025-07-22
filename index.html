@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>École Africaine de Logique et Analyse du Langage</title>
+        <title>A Propos</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> 
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="style_publication.css">
@@ -24,8 +24,10 @@
             <div class="navigation">
                <ul>
                     <i id="menu-close" class="fas fa-times"></i>
-                    <li><a href="#" class="active-tab">Acceuil</a></li>
-                    <li><a href="about.html">A propos</a></li>
+                    <li><a href="index.html" class="active-tab" >Acceuil</a></li>
+                    <li><a href="chercheurs.html">Chercheurs</a></li>
+                    <li><a href="contributeur.html" >Contributeurs</a></li>
+                    <li><a href="#" >A propos</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">Protocole de rédaction<i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
@@ -36,9 +38,6 @@
                         </ul>
                     </li>
                     <li><a href="#">Recherches</a></li>
-                    <li><a href="#">Chercheurs</a></li>
-                    <li><a href="tableau_edit.html">Tableau Editorial</a></li>
-                    <li><a href="contributeur.html">Contributeurs</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
                 <img id="menu-btn" src="images/menu.png" alt="">
@@ -218,46 +217,46 @@
         </script>
         <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
+            import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
 
-// Configuration Firebase
-const appSettings = {
-  databaseURL: "https://ecole-africaine-default-rtdb.asia-southeast1.firebasedatabase.app/",
-  apiKey: "AIzaSyBpBDRdbCzQ6KWFkFO2UK8K_rbTbHHCwF0",
-  authDomain: "ecole-africaine.firebaseapp.com",
-  projectId: "ecole-africaine",
-  storageBucket: "ecole-africaine.firebasestorage.app",
-  messagingSenderId: "740167043479",
-  appId: "1:740167043479:web:78a965e3f34f44920a1cd2"
-};
+            // Configuration Firebase
+            const appSettings = {
+            databaseURL: "https://ecole-africaine-default-rtdb.asia-southeast1.firebasedatabase.app/",
+            apiKey: "AIzaSyBpBDRdbCzQ6KWFkFO2UK8K_rbTbHHCwF0",
+            authDomain: "ecole-africaine.firebaseapp.com",
+            projectId: "ecole-africaine",
+            storageBucket: "ecole-africaine.firebasestorage.app",
+            messagingSenderId: "740167043479",
+            appId: "1:740167043479:web:78a965e3f34f44920a1cd2"
+            };
 
-// Initialiser Firebase
-const app = initializeApp(appSettings);
-const database = getDatabase(app);
-const adsRef = ref(database, "ads");
+            // Initialiser Firebase
+            const app = initializeApp(appSettings);
+            const database = getDatabase(app);
+            const adsRef = ref(database, "ads");
 
-// Afficher les annonces dans le conteneur
-function displayAds() {
-  const adsContainer = document.getElementById("article-container");
-  adsContainer.innerHTML = "";
+            // Afficher les annonces dans le conteneur
+            function displayAds() {
+            const adsContainer = document.getElementById("article-container");
+            adsContainer.innerHTML = "";
 
-  onValue(adsRef, (snapshot) => {
-    adsContainer.innerHTML = ""; // Vider avant de réafficher
-    snapshot.forEach(childSnap => {
-      const ad = childSnap.val();
-      const adBox = document.createElement("div");
-      adBox.classList.add("article-princ");
-      adBox.innerHTML = `
-        <span>Article Publié le : ${ad.date} | ${ad.volume}</span>
-        <h2>${ad.title}</h2>
-        <p class="article-content">${ad.containt}</p>
-        <p class="pdf_link"><a href="${ad.pdf}" target="_blank">Voir le PDF</a></p>
-        <button class="toggle-btn">Voir plus</button>
-      `;
-      adsContainer.appendChild(adBox);
-    });
-  });
-}
+            onValue(adsRef, (snapshot) => {
+                adsContainer.innerHTML = ""; // Vider avant de réafficher
+                snapshot.forEach(childSnap => {
+                const ad = childSnap.val();
+                const adBox = document.createElement("div");
+                adBox.classList.add("article-princ");
+                adBox.innerHTML = `
+                    <span>Article Publié le : ${ad.date} | ${ad.volume}</span>
+                    <h2>${ad.title}</h2>
+                    <p class="article-content">${ad.containt}</p>
+                    <p class="pdf_link"><a href="${ad.pdf}" target="_blank">Voir le PDF</a></p>
+                    <button class="toggle-btn">Voir plus</button>
+                `;
+                adsContainer.appendChild(adBox);
+                });
+            });
+            }
 
 // Bouton "Voir plus" / "Voir moins"
 document.getElementById("article-container").addEventListener("click", function (e) {

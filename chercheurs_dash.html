@@ -5,47 +5,52 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Connexion</title>
-
+        <title>Chercheurs dashboard</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> 
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style_publication.css">
+        <link rel="stylesheet" href="dashboard.css">
+
 
         <link rel="stylesheet" href="style1.css">
-        <link rel="stylesheet" href="style.css">
 
     </head>
 
     <body>
+
         <!-- Navigation -->
         <nav>
-            <img src="images/logo.svg" alt="">
+            <img src="images/ECOLE_AFRICAINE_LOGO-removebg-preview.png" alt="">
             <div class="navigation">
                <ul>
                     <i id="menu-close" class="fas fa-times"></i>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="blog.html">Blogue</a></li>
-                    <li><a href="course.html">Courses</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html" >Acceuil</a></li>
+                    <li><a href="dashboard.html">Tableau de Bord Principal</a></li>
                 </ul>
                 <img id="menu-btn" src="images/menu.png" alt="">
             </div>
         </nav>
-
-        <section id="about-home">
-            <h2>Get Connected to your Cursa Academia Account</h2>
-        </section>
         
-       <div id="signup-box">
-           
-          <input type="email" id="signup-email" placeholder="Adresse email" />
-          <input type="password" id="signup-password" placeholder="Mot de passe" />
-          <input type="text" id="signup-num" placeholder="Numéro de téléphone" />
-          <button id="signup-btn" class="normal">Créer un compte</button>
-          <p id="signup-message" style="color: red;"></p>
-      </div>
-      
 
-    
+        <div class="posting">
+            <h3 class="connecteH3">Bienvenue, <span id="user-name"></span> !</h3>
+     
+            <div class="posting-form">
+                <h4 style="text-align: center;"> Publier un Chercheur </h4>
+                <form id="chercheur_form">
+                <input type="text" id="chercheur-name" class="form-control" placeholder="Nom du Chercheur" required>
+                <input type="text" id="chercheur-field" class="form-control" placeholder="Domaine de Recherche" required>
+                <input type="file" id="chercheur-image" class="form-control" accept="image/*" required>
+                <textarea id="chercheur-description" class="form-control" placeholder="Description du Chercheur" required></textarea>
+                <button type="submit" class="normal">Publier</button>
+                </form>
+             </div>
+        </div>
+
+        <h4 style="text-align: center;"> Chercheurs Publiés </h4>
+        <div id="chercheur-container" > <!--here, are injected data from the DOM--></div>
+
+
         <!-- Footer -->
         <footer>
             <section id="footer">
@@ -73,13 +78,7 @@
                     <li>Marketing Service</li>
                 </div>
 
-                <div class="footer-col">
-                    <h3>Assistance</h3>
-                    <li>Subscribe</li>
-                    <li>Unsubscribe</li>
-                    <li>Privacy Policy</li>
-                    <li>Terms of Service</li>
-                </div>
+                
 
                 <div class="footer-col">
                     <h3>News letter</h3>
@@ -91,7 +90,7 @@
                 </div>
 
                 <div class="copyright">
-                <p>© 2025 TECHNOWEB. All rights reserved.</p>
+                <p>© 2025 E.A.L.A. All rights reserved.</p>
                 <div class="pro-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -102,25 +101,8 @@
             </section>
 
         </footer>
-       
-        <script>
-
-            // Navaigation Bar
-            let menuBtn = document.getElementById('menu-btn');
-            let menuClose = document.getElementById('menu-close');
-            
-            menuBtn.addEventListener('click', function() {
-                document.querySelector('.navigation').classList.add('active');
-            });
-            menuClose.addEventListener('click', function() {
-                document.querySelector('.navigation').classList.remove('active');
-            });
-
-        </script>
-        <script type="module" src="auth_multi.js"></script>
-            
+        <script type="module" src="chercheurs.js"></script>
 
 
     </body>
-
 </html>
