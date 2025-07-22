@@ -574,7 +574,7 @@ footer .subscribe a.yellow:hover{
   
 /* responsive */
 
-@media (max-width: 769px) {
+@media (max-width: 769px), (max-width: 900px) {
   h1{
     font-size: 18px;
   }
