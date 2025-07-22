@@ -155,8 +155,36 @@
 
 
         <script>
+            //Drop down script
+            document.addEventListener("DOMContentLoaded", function () {
+                const dropdownToggle = document.querySelector(".dropdown-toggle");
+                const dropdown = document.querySelector(".dropdown");
+
+                dropdownToggle.addEventListener("click", function (e) {
+                    e.preventDefault(); // Empêche le lien de rediriger
+                    dropdown.classList.toggle("active");
+                });
+
+                // Fermer le dropdown si on clique ailleurs
+                window.addEventListener("click", function (e) {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove("active");
+                    }
+                });
+            });
+        </script>
+         <script>
 
             // Navaigation Bar
+            let menuBtn = document.getElementById('menu-btn');
+            let menuClose = document.getElementById('menu-close');
+            
+            menuBtn.addEventListener('click', function() {
+                document.querySelector('.navigation').classList.add('active');
+            });
+            menuClose.addEventListener('click', function() {
+                document.querySelector('.navigation').classList.remove('active');
+            });
 
         </script>
 
