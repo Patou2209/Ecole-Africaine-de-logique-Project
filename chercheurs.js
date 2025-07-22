@@ -25,7 +25,7 @@ let editingAdId = null;
 
 onAuthStateChanged(auth, (user) => {
   if (!user) {
-    window.location.href = "index.html";
+    window.location.href = "chercheurs.html";
     return;
   }
   document.getElementById("user-name").textContent = user.email;
