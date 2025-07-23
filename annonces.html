@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Chercheurs</title>
+        <title>Annonces</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> 
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="style_publication.css">
@@ -25,9 +25,9 @@
                <ul>
                     <i id="menu-close" class="fas fa-times"></i>
                     <li><a href="index.html" >Acceuil</a></li>
-                    <li><a href="#" class="active-tab">Chercheurs</a></li>
+                    <li><a href="chercheurs.html" >Chercheurs</a></li>
                     <li><a href="contributeur.html">Contributeurs</a></li>
-                    <li><a href="annonces.html">Annonces</a></li>
+                    <li><a href="#" class="active-tab">Annonces</a></li>
                     <li><a href="about.html">A propos</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">Protocole de rédaction<i class="fas fa-chevron-down"></i></a>
@@ -48,14 +48,12 @@
         <!-- Home -->
         <section id="page">
             
-            <h2>Chercheurs </h2>
+            <h2>Annonces </h2>
             
         </section>
 
-        
-         <div id="chercheur-container" > Téléchargement en Cours... <!--here, are injected data from the DOM--></div>
-                
-          
+
+         <div id="annonces-container" > Téléchargement en Cours... <!--here, are injected data from the DOM--></div>
 
         
         <!-- Registration -->
@@ -109,7 +107,7 @@
             </section>
 
         </footer>
-       <script type="module" src="chercheurs.js"></script>
+       <script type="module" src="annonces.js"></script>
        <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
             import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
@@ -128,11 +126,11 @@
             // Initialiser Firebase
             const app = initializeApp(appSettings);
             const database = getDatabase(app);
-            const adsRef = ref(database, "che");
+            const adsRef = ref(database, "ann");
 
             // Afficher les annonces dans le conteneur
             function displayAds() {
-            const adsContainer = document.getElementById("chercheur-container");
+            const adsContainer = document.getElementById("annonce-container");
             adsContainer.innerHTML = "";
 
             onValue(adsRef, (snapshot) => {
@@ -140,12 +138,12 @@
                 snapshot.forEach(childSnap => {
                 const ad = childSnap.val();
                 const adBox = document.createElement("div");
-                adBox.classList.add("profil");
+                adBox.classList.add("article-princ");
                 adBox.innerHTML = `
-                    <img src="${ad.image}" alt="">
-                    <h3>${ad.name}</h3>
-                    <h4>${ad.field}</h4>
-                    <p>${ad.description}</p>
+                    <span>Annonce Publiée le : ${ad.date} </span>
+                    <h2>${ad.title}</h2>
+                    <p class="article-content">${ad.description}</p>
+                    <button class="toggle-btn">Voir plus</button>
                 `;
                 adsContainer.appendChild(adBox);
                 });
@@ -154,6 +152,7 @@
             }
             displayAds();
         </script>
+        
         <script>
 
             // Navaigation Bar
@@ -167,12 +166,7 @@
                 document.querySelector('.navigation').classList.remove('active');
             });
 
-            // icone log
-            
-
         </script>
-
-
         <script>
             //Drop down script
             document.addEventListener("DOMContentLoaded", function () {
@@ -192,6 +186,9 @@
                 });
             });
         </script>
+
+
+        
 
 
 

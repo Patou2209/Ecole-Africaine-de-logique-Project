@@ -23,16 +23,18 @@ const auth = getAuth(app);
 
 let editingAdId = null;
 
-/*onAuthStateChanged(auth, (user) => {
-  if (!user || user) {
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
     window.location.href = "chercheurs.html";
     return;
   }
+
   document.getElementById("user-name").textContent = user.email;
-});*/
+  init(user); // Lancer le script avec le bon user
+});
 
-
-const adForm = document.getElementById("chercheur_form");
+function init(user) {
+  const adForm = document.getElementById("chercheur_form");
 
   adForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -42,101 +44,89 @@ const adForm = document.getElementById("chercheur_form");
     const imageInput = document.getElementById("chercheur-image").files[0];
     const description = document.getElementById("chercheur-description").value;
 
-    const userId = auth.currentUser.uid;
-    const dbRef = ref(getDatabase());
-    const userSnap = await get(child(dbRef, `users/${userId}`));
-    //let number = "";
-    //if (userSnap.exists()) {
-    //  number = userSnap.val().number || "";
-    //}
+    if (!name || !field || !imageInput || !description) {
+      alert("Remplissez toutes les cases svp !");
+      return;
+    }
 
-    const saveAd = async (imageData) => {
+    const reader = new FileReader();
+    reader.onload = async () => {
       const ad = {
         name,
         field,
-        image: imageData,
+        image: reader.result,
         description,
         userEmail: user.email,
-        createdAt: Date.now(),
+        createdAt: Date.now()
       };
 
-      // Validate form fields
-      if (!name || !field || !imageInput || !description) {
-        alert("Remplissez toutes les cases Svp!.");
-        return;
-      } 
+      try {
+        if (editingAdId) {
+          await update(ref(database, `che/${editingAdId}`), ad);
+          editingAdId = null;
+        } else {
+          await push(adsRef, ad);
+        }
 
-      if (editingAdId) {
-        await update(ref(database, `che/${editingAdId}`), ad);
-        editingAdId = null;
-      } else {
-        await push(adsRef, ad);
+        adForm.reset();
+        displayAds(user);
+      } catch (err) {
+        console.error("Erreur lors de l'enregistrement :", err);
       }
-
-      adForm.reset();
-      displayAds();
     };
-
-    if (imageInput) {
-      const reader = new FileReader();
-      reader.onload = () => saveAd(reader.result);
-      reader.readAsDataURL(imageInput);
-    } else {
-      saveAd();
-    }
-    console.log("Ad saved successfully");
+    reader.readAsDataURL(imageInput);
   });
 
-  function displayAds() {
-    const adsContainer = document.getElementById("chercheur-container");
+  displayAds(user);
+}
+
+function displayAds(user) {
+  const adsContainer = document.getElementById("chercheur-container");
+  adsContainer.innerHTML = "";
+
+  onValue(adsRef, (snapshot) => {
     adsContainer.innerHTML = "";
+    snapshot.forEach((childSnap) => {
+      const ad = childSnap.val();
+      const adId = childSnap.key;
 
-    onValue(adsRef, (snapshot) => {
-      adsContainer.innerHTML = "";
-      snapshot.forEach(childSnap => {
-        const ad = childSnap.val();
-        const adId = childSnap.key;
-        if (ad.userEmail === user.email) {
-          const adBox = document.createElement("div");
-          adBox.classList.add("profil");
-          adBox.innerHTML = `
-            <img src="${ad.image}" alt="">
-            <h3>${ad.name}</h3>
-            <h4>${ad.field}</h4>
-            <p>${ad.description}</p>
-            <button class="normal" id="green" onclick="editAd('${adId}')">Modifier</button>
-            <button class="normal" id="red" onclick="deleteAd('${adId}')">Supprimer</button>
-          `;
-          adsContainer.appendChild(adBox);
-        }
-      });
+      if (ad.userEmail === user.email) {
+        const adBox = document.createElement("div");
+        adBox.classList.add("profil");
+        adBox.innerHTML = `
+          <img src="${ad.image}" alt="">
+          <h3>${ad.name}</h3>
+          <h4>${ad.field}</h4>
+          <p>${ad.description}</p>
+          <button class="normal" id="green" onclick="editAd('${adId}')">Modifier</button>
+          <button class="normal" id="red" onclick="deleteAd('${adId}')">Supprimer</button>
+        `;
+        adsContainer.appendChild(adBox);
+      }
     });
-  }
+  });
+}
 
-  window.deleteAd = async function(adId) {
+window.deleteAd = async function (adId) {
+  try {
     await remove(ref(database, `che/${adId}`));
-  };
+  } catch (err) {
+    console.error("Erreur lors de la suppression :", err);
+  }
+};
 
-  window.editAd = async function(adId) {
+window.editAd = async function (adId) {
+  try {
     const adSnap = await get(child(ref(database), `che/${adId}`));
     if (adSnap.exists()) {
       const ad = adSnap.val();
       document.getElementById("chercheur-name").value = ad.name;
       document.getElementById("chercheur-field").value = ad.field;
-      document.getElementById("chercheur-image").value = ad.image ;
       document.getElementById("chercheur-description").value = ad.description;
       editingAdId = adId;
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  };
-
-  displayAds();
-//});
-
-
-
-///////////////////////////////////////// La Partie concenant le Chercheur////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  
-        
+  } catch (err) {
+    console.error("Erreur chargement pour modification :", err);
+  }
+};

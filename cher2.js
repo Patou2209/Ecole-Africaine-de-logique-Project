@@ -23,13 +23,14 @@ const auth = getAuth(app);
 
 let editingAdId = null;
 
-onAuthStateChanged(auth, (user) => {
-  if (!user) {
+/*onAuthStateChanged(auth, (user) => {
+  if (!user || user) {
     window.location.href = "chercheurs.html";
     return;
   }
-  document.getElementById("user-name").textContent = user.email;
-
+  
+});*/
+document.getElementById("user-name").textContent = user.email;
 
 const adForm = document.getElementById("chercheur_form");
 
@@ -83,7 +84,6 @@ const adForm = document.getElementById("chercheur_form");
     } else {
       saveAd();
     }
-    console.log("Ad saved successfully");
   });
 
   function displayAds() {
@@ -130,7 +130,7 @@ const adForm = document.getElementById("chercheur_form");
   };
 
   displayAds();
-});
+//});
 
 
 

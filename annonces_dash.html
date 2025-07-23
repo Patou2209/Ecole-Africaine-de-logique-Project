@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Chercheurs dashboard</title>
+        <title>Tableau de Bord Principal</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> 
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="style_publication.css">
@@ -33,23 +33,35 @@
         
 
         <div class="posting" style="padding-top: 150px;">
-            <h3 class="connecteH3">Bienvenue <span id="user-name"></span> !</h3>
-     
+          <h3 class="connecteH3">Bienvenue <span id="user-name"></span> !</h3>
+           <!-- <div class="search">
+                    <i class="fa fa-search" id="search-icon" title="Recherche"></i>
+                    <input type="text" id="search-bar" placeholder="Recherche" class="form-control" >
+                <div class="filtre">
+                    <select id="sort-ads" class="form-control">
+                        <option value="" title="Tous les produits"></option>
+                        <option value="Electronics" title="Produits électroniques">Electronics</option>
+                        <option value="Habillement" title="Vêtements et accessoires">Habillement</option>
+                        <option value="Voiture" title="Véhicules et accessoires">Voiture</option>
+                        <option value="Immobilier" title="Biens immobiliers">Immobilier</option>
+                    </select>
+                </div>
+            </div> -->
+
             <div class="posting-form">
-                <h4 style="text-align: center;"> Publier un Chercheur </h4>
-                <form id="chercheur_form">
-                <input type="text" id="chercheur-name" class="form-control" placeholder="Nom du Chercheur" required>
-                <input type="text" id="chercheur-field" class="form-control" placeholder="Domaine de Recherche" required>
-                <input type="file" id="chercheur-image" class="form-control" accept="image/*" required>
-                <textarea id="chercheur-description" class="form-control" placeholder="Description du Chercheur" required></textarea>
+                <h4 style="text-align: center;"> Publier une Annonce </h4>
+                <form id="article_form">
+                <input type="text" id="annonce-date" class="form-control" placeholder="Date: ex; 22/09/1998" required>
+                <input type="text" id="annonce-title" class="form-control" placeholder="Titre de l'article" required>
+                <textarea id="annonce-description" class="form-control" placeholder="Le Contenu " required></textarea>
                 <button type="submit" class="normal">Publier</button>
                 </form>
-             </div>
+            </div>
+            <h4 style="text-align: center;"> Annonces Publiées </h4>
         </div>
 
-        <h4 style="text-align: center;"> Chercheurs Publiés </h4>
-        <div id="chercheur-container" > Téléchargement en cours... <!--here, are injected data from the DOM--></div>
 
+        <div id="annonce-container" > <!--here, are injected data from the DOM--></div>
 
         <!-- Footer -->
         <footer>
@@ -97,10 +109,8 @@
             </section>
 
         </footer>
-        <script type="module" src="chercheurs.js"></script>
-        
-        
-         <script>
+        <script type="module" src="annonces.js"></script>
+        <script>
 
             // Navaigation Bar
             let menuBtn = document.getElementById('menu-btn');
@@ -113,7 +123,10 @@
                 document.querySelector('.navigation').classList.remove('active');
             });
 
-        </script>
+            // icone log
+            
 
+        </script>
+         
     </body>
 </html>
