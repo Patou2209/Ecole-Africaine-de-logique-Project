@@ -19,17 +19,18 @@
     <body>
 
         <!-- Navigation -->
-        <nav>
+       <nav>
             <img src="images/ECOLE_AFRICAINE_LOGO-removebg-preview.png" alt="">
             <div class="navigation">
                <ul>
                     <i id="menu-close" class="fas fa-times"></i>
-                    <li><a href="index.html" class="active-tab" >Acceuil</a></li>
+                    <li><a href="index.html" class="active-tab">Acceuil</a></li>
                     <li><a href="chercheurs.html">Chercheurs</a></li>
-                    <li><a href="contributeur.html" >Contributeurs</a></li>
+                    <li><a href="#" >Contributeurs</a></li>
                     <li><a href="annonces.html">Annonces</a></li>
                     <li><a href="about.html" >A propos</a></li>
-                    <li class="dropdown">
+                    <li><a href="protocol.html" >Protocole de rédaction</a></li>
+                    <!--<li class="dropdown">
                         <a href="#" class="dropdown-toggle">Protocole de rédaction<i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Droit d'Auteur & Licence</a></li>
@@ -37,7 +38,7 @@
                             <li><a href="#">Politique de dépistage de plagiat</a></li>
                             <li><a href="#">Politique d'archives</a></li>
                         </ul>
-                    </li>
+                    </li>-->
                     <li><a href="#">Recherches</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -267,18 +268,18 @@
             });
             }
 
-// Bouton "Voir plus" / "Voir moins"
-document.getElementById("article-container").addEventListener("click", function (e) {
-  if (e.target.classList.contains("toggle-btn")) {
-    const btn = e.target;
-    const content = btn.parentElement.querySelector(".article-content");
-    content.classList.toggle("expanded");
-    btn.textContent = content.classList.contains("expanded") ? "Voir moins" : "Voir plus";
-  }
-});
+            // Bouton "Voir plus" / "Voir moins"
+            document.getElementById("article-container").addEventListener("click", function (e) {
+            if (e.target.classList.contains("toggle-btn")) {
+                const btn = e.target;
+                const content = btn.parentElement.querySelector(".article-content");
+                content.classList.toggle("expanded");
+                btn.textContent = content.classList.contains("expanded") ? "Voir moins" : "Voir plus";
+            }
+            });
 
-// Lancer l'affichage
-displayAds();
+            // Lancer l'affichage
+            displayAds();
 
         </script>
     </body>
