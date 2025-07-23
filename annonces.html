@@ -53,7 +53,7 @@
         </section>
 
 
-         <div id="annonces-container" > Téléchargement en Cours... <!--here, are injected data from the DOM--></div>
+         <div id="annonces-container" >  <!--here, are injected data from the DOM--></div>
 
         
         <!-- Registration -->
@@ -130,7 +130,7 @@
 
             // Afficher les annonces dans le conteneur
             function displayAds() {
-            const adsContainer = document.getElementById("annonce-container");
+            const adsContainer = document.getElementById("annonces-container");
             adsContainer.innerHTML = "";
 
             onValue(adsRef, (snapshot) => {
