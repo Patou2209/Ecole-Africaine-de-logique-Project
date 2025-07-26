@@ -276,11 +276,12 @@
   height: auto;
   margin-bottom: 15px;
 }
-
+#home h2{
+  font-size: 1.1rem;
 
 }
 #article-container .article-cot{
   width: 100%;
   padding: 10px;
 }
-
+}
