@@ -122,11 +122,11 @@ h4{
    }
   #contact-details .map {
       width: 55%;
-      height: 400px;
+      height: auto;
     }
-  #contact-details .map iframe {
+  #contact-details .map img {
       width: 100%;
-      height: 100%;
+      height: auto;
     }
   
     #form-details{
