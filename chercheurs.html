@@ -121,11 +121,19 @@
             </section>
 
         </footer>
-       <script type="module">
+        <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
-            import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
+            import {
+            getDatabase,
+            ref,
+            push,
+            onValue,
+            remove,
+            update,
+            get,
+            child
+            } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
 
-            // Configuration Firebase
             const appSettings = {
             databaseURL: "https://ecole-africaine-default-rtdb.asia-southeast1.firebasedatabase.app/",
             apiKey: "AIzaSyBpBDRdbCzQ6KWFkFO2UK8K_rbTbHHCwF0",
@@ -136,34 +144,100 @@
             appId: "1:740167043479:web:78a965e3f34f44920a1cd2"
             };
 
-            // Initialiser Firebase
             const app = initializeApp(appSettings);
             const database = getDatabase(app);
             const adsRef = ref(database, "che");
 
-            // Afficher les annonces dans le conteneur
+            /*let editingAdId = null;
+
+            const adForm = document.getElementById("article_form");
+
+            if (adForm) {
+            adForm.addEventListener("submit", async (event) => {
+                event.preventDefault();
+
+                const date = document.getElementById("annonce-date").value;
+                const title = document.getElementById("annonce-title").value;
+                const description = document.getElementById("annonce-description").value;
+
+                const ad = {
+                date,
+                title,
+                description,
+                createdAt: Date.now()
+                };
+
+                try {
+                if (editingAdId) {
+                    await update(ref(database, `ann/${editingAdId}`), ad);
+                    editingAdId = null;
+                } else {
+                    await push(adsRef, ad);
+                }
+
+                adForm.reset();
+                displayAds();
+                } catch (error) {
+                console.error("Erreur lors de la sauvegarde :", error);
+                }
+            });
+            }*/
+
+            displayAds();
+
             function displayAds() {
             const adsContainer = document.getElementById("chercheur-container");
+            if (!adsContainer) return;
+
             adsContainer.innerHTML = "";
 
             onValue(adsRef, (snapshot) => {
-                adsContainer.innerHTML = ""; // Vider avant de réafficher
-                snapshot.forEach(childSnap => {
+                adsContainer.innerHTML = "";
+
+                snapshot.forEach((childSnap) => {
                 const ad = childSnap.val();
+                const adId = childSnap.key;
+
                 const adBox = document.createElement("div");
-                adBox.classList.add("profil");
+               adBox.classList.add("profil");
                 adBox.innerHTML = `
                     <img src="${ad.image}" alt="">
                     <h3>${ad.name}</h3>
                     <h4>${ad.field}</h4>
                     <p>${ad.description}</p>
+                    <!--<button class="normal" id="green" onclick="editAd('${adId}')">Modifier</button>
+                    <button class="normal" id="red" onclick="deleteAd('${adId}')">Supprimer</button>-->
                 `;
                 adsContainer.appendChild(adBox);
                 });
-                
             });
             }
-            displayAds();
+
+            /*window.deleteAd = async function (adId) {
+            try {
+                await remove(ref(database, `ann/${adId}`));
+                displayAds();
+            } catch (error) {
+                console.error("Erreur lors de la suppression :", error);
+            }
+            };
+
+            window.editAd = async function (adId) {
+            try {
+                const adSnap = await get(child(ref(database), `ann/${adId}`));
+                if (adSnap.exists()) {
+                const ad = adSnap.val();
+                document.getElementById("annonce-date").value = ad.date;
+                document.getElementById("annonce-title").value = ad.title;
+                document.getElementById("annonce-description").value = ad.description;
+                editingAdId = adId;
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+            } catch (error) {
+                console.error("Erreur lors du chargement de l'annonce :", error);
+            }
+            };*/
+
         </script>
         <script>
 
