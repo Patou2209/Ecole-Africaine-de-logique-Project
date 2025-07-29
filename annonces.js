@@ -24,10 +24,10 @@ const auth = getAuth(app);
 let editingAdId = null;
 
 onAuthStateChanged(auth, (user) => {
-  if (!user) {
+  /*if (!user) {
     window.location.href = "index.html";
     return;
-  }
+  }*/
 
   document.getElementById("user-name").textContent = user.email;
   displayAds();
