@@ -70,7 +70,7 @@ onAuthStateChanged(auth, (user) => {
 });
 
 function displayAds() {
-  const adsContainer = document.getElementById("annonce-container");
+  const adsContainer = document.getElementById("communique-container");
   adsContainer.innerHTML = "";
 
   onValue(adsRef, (snapshot) => {

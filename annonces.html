@@ -54,7 +54,7 @@
         </section>
 
 
-         <div id="annonces-container" >  <!--here, are injected data from the DOM--></div>
+         <div id="communique-container" >  <!--here, are injected data from the DOM--></div>
 
         
         <!-- Registration -->
@@ -174,7 +174,7 @@
             displayAds();
 
             function displayAds() {
-            const adsContainer = document.getElementById("annonces-container");
+            const adsContainer = document.getElementById("communique-container");
             if (!adsContainer) return;
 
             adsContainer.innerHTML = "";
@@ -262,7 +262,17 @@
                 });
             }); */
         </script>
-
+        <script>
+            // Bouton "Voir plus" / "Voir moins"
+            document.getElementById("communique-container").addEventListener("click", function (e) {
+            if (e.target.classList.contains("toggle-btn")) {
+                const btn = e.target;
+                const content = btn.parentElement.querySelector(".article-content");
+                content.classList.toggle("expanded");
+                btn.textContent = content.classList.contains("expanded") ? "Voir moins" : "Voir plus";
+            }
+            });
+        </script>
 
         
 
