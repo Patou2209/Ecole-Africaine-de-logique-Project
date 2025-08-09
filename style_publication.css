@@ -145,33 +145,40 @@
     opacity: 1;
 }
 
-#chercheur-container{
+#chercheur-container,
+#contributeur-container{
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
   padding: 25px;
 }
-#chercheur-container .profil{
+#chercheur-container .profil,
+#contributeur-container .profil{
   width: 350px;
   padding: 10px;
   margin: 20px;
-  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+ 
 }
-#chercheur-container .profil img{
+#chercheur-container .profil img,
+#contributeur-container .profil img{
   width: 100%;
   height: 310px;
   margin-bottom: 15px;
+  border-radius: 10px;
 }
-#chercheur-container .profil h3{
+#chercheur-container .profil h3,
+#contributeur-container .profil h3{
   text-align: center;
   color: rgb(21, 21, 100);
 }
-#chercheur-container .profil h4{
+#chercheur-container .profil h4,
+#contributeur-container .profil h4{
   text-align: center;
   color: #FDC93B;
   margin: 15px 0;
 }
-#chercheur-container .profil p{
+#chercheur-container .profil p,
+#contributeur-container .profil p{
   text-align: justify;
 }
 .active-tab {

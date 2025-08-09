@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tableau de Bord Principal</title>
+        <title>Contributeurs dashboard</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> 
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="style_publication.css">
@@ -25,54 +25,31 @@
                <ul>
                     <i id="menu-close" class="fas fa-times"></i>
                     <li><a href="index.html" >Acceuil</a></li>
-                    <li><a href="chercheurs_dash.html">Publier Un Chercheur</a></li>
-                    <li><a href="annonces_dash.html">Publier Une Annonce</a></li>
-                    <li><a href="contributeur_dash.html">Publier Un Contributeur</a></li>
-
+                    <li><a href="dashboard.html">Tableau de Bord Principal</a></li>
                 </ul>
                 <img id="menu-btn" src="images/menu.png" alt="">
             </div>
         </nav>
-
-        <section id="about-home">
-            <h2>Tableau de Bord Administrateur</h2>
-        </section>
         
 
-        <div class="posting">
-            <h3 class="connecteH3">Bienvenue, <span id="user-name"></span> !</h3>
-           
- 
-           <!-- <div class="search">
-                    <i class="fa fa-search" id="search-icon" title="Recherche"></i>
-                    <input type="text" id="search-bar" placeholder="Recherche" class="form-control" >
-                <div class="filtre">
-                    <select id="sort-ads" class="form-control">
-                        <option value="" title="Tous les produits"></option>
-                        <option value="Electronics" title="Produits électroniques">Electronics</option>
-                        <option value="Habillement" title="Vêtements et accessoires">Habillement</option>
-                        <option value="Voiture" title="Véhicules et accessoires">Voiture</option>
-                        <option value="Immobilier" title="Biens immobiliers">Immobilier</option>
-                    </select>
-                </div>
-            </div> -->
-
+        <div class="posting" style="padding-top: 150px;">
+            <h3 class="connecteH3">Bienvenue <span id="user-name"></span> !</h3>
+     
             <div class="posting-form">
-                <h4 style="text-align: center;"> Publier un Article </h4>
-                <form id="article_form">
-                <input type="text" id="art-date" class="form-control" placeholder="Date: ex; 22/09/1998" required>
-                <input type="text" id="art-volt" class="form-control" placeholder="Volume: ex; Volume: 10, Numéro: 05" required>
-                <input type="text" id="art-title" class="form-control" placeholder="Titre de l'article" required>
-                <input type="file" id="art-pdf" class="form-control" accept="application/pdf" required>
-                <textarea id="art-containt" class="form-control" placeholder="Le Contenu " required></textarea>
+                <h4 style="text-align: center;"> Publier un Contributeur </h4>
+                <form id="chercheur_form">
+                <input type="text" id="contributeur-name" class="form-control" placeholder="Nom du contributeur" required>
+                <input type="text" id="contributeur-field" class="form-control" placeholder="Domaine de Recherche" required>
+                <input type="file" id="contributeur-image" class="form-control" accept="image/*" required>
+                <textarea id="contributeur-description" class="form-control" placeholder="Description du contributeur" required></textarea>
                 <button type="submit" class="normal">Publier</button>
                 </form>
-            </div>
-            <h4 style="text-align: center;"> Articles Publiés </h4>
+             </div>
         </div>
 
+        <h4 style="text-align: center;"> contributeurs Publiés </h4>
+        <div id="contributeur-container" > Téléchargement en cours... <!--here, are injected data from the DOM--></div>
 
-        <div id="article-container" > <!--here, are injected data from the DOM--></div>
 
         <!-- Footer -->
         <footer>
@@ -120,9 +97,23 @@
             </section>
 
         </footer>
-        <script type="module" src="articles.js"></script>
+        <script type="module" src="contributeurs.js"></script>
         
+        
+         <script>
 
+            // Navaigation Bar
+            let menuBtn = document.getElementById('menu-btn');
+            let menuClose = document.getElementById('menu-close');
+            
+            menuBtn.addEventListener('click', function() {
+                document.querySelector('.navigation').classList.add('active');
+            });
+            menuClose.addEventListener('click', function() {
+                document.querySelector('.navigation').classList.remove('active');
+            });
+
+        </script>
 
     </body>
 </html>
