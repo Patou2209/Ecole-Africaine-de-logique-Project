@@ -25,10 +25,7 @@
                <ul>
                     <i id="menu-close" class="fas fa-times"></i>
                     <li><a href="index.html" >Acceuil</a></li>
-                    <li><a href="chercheurs_dash.html">Publier Un Chercheur</a></li>
-                    <li><a href="annonces_dash.html">Publier Une Annonce</a></li>
-                    <li><a href="contributeur_dash.html">Publier Un Contributeur</a></li>
-                    <li><a href="recherche_dashboard.html">Publier Une Recherche</a></li>
+                    <li><a href="dashboard.html" >Tableau de Bord Principal</a></li>
 
                 </ul>
                 <img id="menu-btn" src="images/menu.png" alt="">
@@ -36,7 +33,7 @@
         </nav>
 
         <section id="about-home">
-            <h2>Tableau de Bord Administrateur</h2>
+            <h2>Tableau de Bord Recherche</h2>
         </section>
         
 
@@ -59,21 +56,22 @@
             </div> -->
 
             <div class="posting-form">
-                <h4 style="text-align: center;"> Publier un Article </h4>
+                <h4 style="text-align: center;"> Publier une Recherche </h4>
                 <form id="article_form">
                 <input type="text" id="art-date" class="form-control" placeholder="Date: ex; 22/09/1998" required>
                 <input type="text" id="art-volt" class="form-control" placeholder="Volume: ex; Volume: 10, Numéro: 05" required>
-                <input type="text" id="art-title" class="form-control" placeholder="Titre de l'article" required>
+                <input type="text" id="art-type" class="form-control" placeholder="Type de la Recherche" required>
+                <input type="text" id="art-title" class="form-control" placeholder="Titre de la Recherche" required>
                 <input type="file" id="art-pdf" class="form-control" accept="application/pdf" required>
                 <textarea id="art-containt" class="form-control" placeholder="Le Contenu " required></textarea>
                 <button type="submit" class="normal">Publier</button>
                 </form>
             </div>
-            <h4 style="text-align: center;"> Articles Publiés </h4>
+            <h4 style="text-align: center;"> Recherches Publiées </h4>
         </div>
 
 
-        <div id="article-container" > <!--here, are injected data from the DOM--></div>
+        <div id="recherche-container" > <!--here, are injected data from the DOM--></div>
 
         <!-- Footer -->
         <footer>
@@ -121,7 +119,7 @@
             </section>
 
         </footer>
-        <script type="module" src="articles.js"></script>
+        <script type="module" src="recherche.js"></script>
         
 
 

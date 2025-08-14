@@ -4,13 +4,15 @@
   gap: 25px;
   padding: 25px;
 }
-#article-container{
+#article-container,
+#recherche-container{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(620px, 1fr));
   padding: 20px;
   
 }
-.article-content {
+.article-content,
+.recherche-content {
   max-height: 60px;
   overflow: hidden;
   transition:  0.4s ease;
@@ -26,6 +28,10 @@
   transition: 0.4s ease;
 }
 .article-content.expanded {
+  max-height: auto;
+  transition: 0.4s ease;
+}
+.recherche-content.expanded {
   max-height: auto;
   transition: 0.4s ease;
 }

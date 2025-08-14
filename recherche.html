@@ -81,44 +81,37 @@
             <div class="navigation">
                <ul>
                     <i id="menu-close" class="fas fa-times"></i>
-                    <li><a href="index.html" class="active-tab">Acceuil</a></li>
+                    <li><a href="index.html" >Acceuil</a></li>
                     <li><a href="about.html" >A propos</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="chercheurs.html">Chercheurs</a></li>
                     <li><a href="contributeur.html" >Contributeurs</a></li>
                     <li><a href="annonces.html">Annonces</a></li>
                     <li><a href="protocol.html" >Protocole de rédaction</a></li>
-                    <li><a href="recherche.html">Recherches</a></li> 
+                    <li><a href="#" class="active-tab">Recherches</a></li> 
                 </ul>
                 <img id="menu-btn" src="images/menu.png" alt="">
             </div>
         </nav>
 
         <!-- Home -->
-        <section id="home">
-
-            <h2 class="fade-inn">École Africaine de Logique et d’Analyse du Langage</h2>
-            <p style="color: #FDC93B;">Bienvenue sur notre plateforme dédiée à la publication et à la recherche en logique et analyse du langage.</p>
-
+        <section id="about-home">
+            <h2>Recherches</h2>
         </section>
 
         <section id="contact-details" >
             <div class="details">
                 <p style="text-align: justify;">Fondée en 2022 en République Démocratique du Congo, l’École Africaine de Logique et d’Analyse du Langage (EALAL) est un espace académique et intellectuel dédié à la recherche avancée, à la formation rigoureuse et à la promotion des études en logique et en analyse du langage dans un contexte africain contemporain.
                 Ancrée dans les réalités culturelles et linguistiques du continent, l’École vise à créer une passerelle entre les traditions philosophiques africaines, les sciences du langage, la logique formelle et les enjeux mondiaux du savoir, notamment ceux liés à la rationalité et à l’intelligence artificielle.
-                </p> <br>
-                <p style="text-align: justify;"><b>Une école tournée vers l’avenir.</b></p>
+                </p> 
                 
-                <p style="text-align: justify;">Par ses programmes de formation, ses publications spécialisées, ses séminaires et partenariats internationaux, l’École Africaine de Logique et d’Analyse du Langage se positionne comme un acteur central de la restructuration intellectuelle et scientifique du continent.
-
-                Elle projette notamment la création d’une chaire en « Logique, Philosophie analytique et Philosophie du langage », et la mise en place de partenariats stratégiques avec des universités étrangères, dans un esprit d’ouverture, de rigueur et d’excellence.</p>
             </div>
             <div class="map">
                 <img src="images/lib.jpg" width="600" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
             </div>
         </section>
         
-        <section id="article-container"> Téléchargement en Cours... <!--Sh*t injected--></section>
+        <section id="recherche-container"> <!--Sh*t injected--></section>
 
         
         <!-- Registration -->
@@ -135,56 +128,7 @@
             </div>
          </section>
 
-        <!-- Profiles -->
-         <section id="experts">
-            <h1>Communauté de Rédaction </h1>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius esse minus cupiditate.</p>
-            <div class="experts-box">
-                <div class="profile">
-                   <img src="images/pro1.webp" alt=""> 
-                   <h6>John Doe</h6>
-                   <p> Learning Expert</p>
-                   <div class="pro-links">
-                       <a href="#"><i class="fab fa-facebook-f"></i></a>
-                       <a href="#"><i class="fab fa-twitter"></i></a>
-                       <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                   </div>
-                </div>
-
-                <div class="profile">
-                   <img src="images/pro2.webp" alt=""> 
-                   <h6>Sandro Poter</h6>
-                   <p> Developer Expert</p>
-                   <div class="pro-links">
-                       <a href="#"><i class="fab fa-facebook-f"></i></a>
-                       <a href="#"><i class="fab fa-twitter"></i></a>
-                       <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                   </div>
-                </div>
-
-                <div class="profile">
-                   <img src="images/pro3.webp" alt=""> 
-                   <h6>Smith Rowe</h6>
-                   <p> Scientist Expert</p>
-                   <div class="pro-links">
-                       <a href="#"><i class="fab fa-facebook-f"></i></a>
-                       <a href="#"><i class="fab fa-twitter"></i></a>
-                       <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                   </div>
-                </div>
-
-                <div class="profile">
-                   <img src="images/pro4.webp" alt=""> 
-                   <h6>Maria Garcia</h6>
-                   <p> Developer Expert</p>
-                   <div class="pro-links">
-                       <a href="#"><i class="fab fa-facebook-f"></i></a>
-                       <a href="#"><i class="fab fa-twitter"></i></a>
-                       <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                   </div>
-                </div>
-            </div>
-         </section>
+       
         <!-- Footer -->
         <footer>
             <section id="footer">
@@ -291,11 +235,11 @@
             // Initialiser Firebase
             const app = initializeApp(appSettings);
             const database = getDatabase(app);
-            const adsRef = ref(database, "ads");
+            const adsRef = ref(database, "rech");
 
             // Afficher les annonces dans le conteneur
             function displayAds() {
-            const adsContainer = document.getElementById("article-container");
+            const adsContainer = document.getElementById("recherche-container");
             adsContainer.innerHTML = "";
 
             onValue(adsRef, (snapshot) => {
@@ -305,7 +249,8 @@
                 const adBox = document.createElement("div");
                 adBox.classList.add("article-princ");
                 adBox.innerHTML = `
-                    <span>Article Publié le : ${ad.date} | ${ad.volume}</span>
+                    <span>Recherche Publiée le : ${ad.date} </span>
+                    <p class="article-type">Type de Recherche : ${ad.tipe}</p>
                     <h2>${ad.title}</h2>
                     <p class="article-content">${ad.containt}</p>
                     <p class="pdf_link"><a href="${ad.pdf}" target="_blank">Voir le PDF</a></p>
@@ -317,10 +262,10 @@
             }
 
             // Bouton "Voir plus" / "Voir moins"
-            document.getElementById("article-container").addEventListener("click", function (e) {
+            document.getElementById("recherche-container").addEventListener("click", function (e) {
             if (e.target.classList.contains("toggle-btn")) {
                 const btn = e.target;
-                const content = btn.parentElement.querySelector(".article-content");
+                const content = btn.parentElement.querySelector(".recherche-content");
                 content.classList.toggle("expanded");
                 btn.textContent = content.classList.contains("expanded") ? "Voir moins" : "Voir plus";
             }
