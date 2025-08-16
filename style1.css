@@ -546,56 +546,6 @@ footer .subscribe a.yellow:hover{
 
 /* Course_inner */
 
-/* contact */
-#contact-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-   }
-   #contact-details .details {
-    width: 40%;
-   }
-   #contact-details .details span {
-    font-size: 12px;
-    
-   }
-   #contact-details .details span,
-   #form-details form span {
-    font-size: 12px;
-  
-   }
-   #contact-details .details h2,
-   #form-details form h2 {
-    font-size: 18px;
-    margin: 0;
-   }
-   #contact-details .details h3 {
-    font-size: 15px;
-    line-height: 30px;
-   
-   }
-   #contact-details .details li {
-    list-style: none;
-    display: flex;
-    padding: 10px 0;
-   }
-   #contact-details .details li i {
-    font-size: 14px;
-    padding-right:22px ;
-   }
-   #contact-details .details li p {
-    margin:0;
-    font-size: 14px;
-   }
-  #contact-details .map {
-      width: 55%;
-      height: 400px;
-    }
-  #contact-details .map iframe {
-      width: 100%;
-      height: 100%;
-    }
-  
     #form-details{
       display: flex;
       flex-wrap: wrap;
@@ -894,43 +844,13 @@ footer .subscribe a.yellow:hover{
   #home h2{
     font-size: 17px;
   }
+  
+  
 }
 
 /*contact page */
 @media (max-width:475px){
-      #contact-details {
-        flex-direction: column;
-      }
-      #contact-details .details h2,
-      #form-details form h2 {
-        font-size: 14px;
-        margin: 0;
-      }
-      #contact-details .details h3 {
-        font-size: 13px;
-        line-height: 10px;
       
-      }
-      #contact-details .details li {
-        list-style: none;
-        display: flex;
-        padding: 5px 0;
-      }
-      #contact-details .details li i {
-        font-size: 12px;
-        padding-right:20px ;
-      }
-      #contact-details .details li p {
-        margin:0;
-        font-size: 12px;
-      }
-  
-      #contact-details .details {
-        min-width: 100%;
-      }
-      #contact-details .map {
-        min-width: 100%;
-      }
       #form-details form {
         min-width: 100%;
         display: flex;
