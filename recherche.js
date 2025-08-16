@@ -100,7 +100,7 @@ const adForm = document.getElementById("article_form");
         const adId = childSnap.key;
         if (ad.userEmail === user.email) {
           const adBox = document.createElement("div");
-          adBox.classList.add("article-princ");
+          adBox.classList.add("rech-princ");
           adBox.innerHTML = `
             <span>Recherche Publiée le : ${ad.date}  </span>
             <p class="article-type">Type de Recherche : ${ad.tipe}</p>

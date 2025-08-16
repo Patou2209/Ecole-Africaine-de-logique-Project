@@ -143,8 +143,3 @@ const adForm = document.getElementById("article_form");
     btn.textContent = content.classList.contains("expanded") ? "Voir moins" : "Voir plus";
   }
 });
-
-
-  
-  
-        

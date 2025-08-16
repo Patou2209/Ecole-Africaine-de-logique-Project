@@ -35,7 +35,8 @@
   max-height: auto;
   transition: 0.4s ease;
 }
-.article-princ{
+.article-princ,
+.rech-princ{
   width: 620px;
   padding: 10px;
   
@@ -45,18 +46,19 @@
   overflow: visible;
 }
 .article-princ span,
+.rech-princ,
 .article-cot span{
   text-align: left;
   font-size: 12px;
   color: #757373;
 }
-.article-princ h2{
+.article-princ h2,.rech-princ h2{
   text-align: left;
   font-size: 17px;
   color: rgb(45, 45, 46);
   margin: 15px 0;
 }
-.article-princ p{
+.article-princ p, .rech-princ{
   text-align: justify;
   color: #3b3b3b;
   font-size: 15px;
