@@ -89,19 +89,23 @@ const adForm = document.getElementById("article_form");
     }
   });
 
-  function displayAds() {
-    const adsContainer = document.getElementById("recherche-container");
-    adsContainer.innerHTML = "";
+function displayAds() {
+  const adsContainer = document.getElementById("communique-container");
+  adsContainer.innerHTML = "";
 
-    onValue(adsRef, (snapshot) => {
-      adsContainer.innerHTML = "";
-      snapshot.forEach(childSnap => {
-        const ad = childSnap.val();
-        const adId = childSnap.key;
-        if (ad.userEmail === user.email) {
-          const adBox = document.createElement("div");
-          adBox.classList.add("rech-princ");
-          adBox.innerHTML = `
+  onValue(adsRef, (snapshot) => {
+    adsContainer.innerHTML = "";
+    const currentUser = auth.currentUser;
+    if (!currentUser) return;
+
+    snapshot.forEach((childSnap) => {
+      const ad = childSnap.val();
+      const adId = childSnap.key;
+
+      if (ad.userEmail === currentUser.email) {
+        const adBox = document.createElement("div");
+        adBox.classList.add("article-princ");
+        adBox.innerHTML = `
             <span>Recherche Publiée le : ${ad.date}  </span>
             <p class="article-type">Type de Recherche : ${ad.tipe}</p>
             <h2>${ad.title}</h2>
@@ -113,16 +117,16 @@ const adForm = document.getElementById("article_form");
           `;
           adsContainer.appendChild(adBox);
         }
-      });
     });
-  }
+  });
+}
 
-  window.deleteAd = async function(adId) {
-    await remove(ref(database, `ads/${adId}`));
+window.deleteAd = async function(adId) {
+    await remove(ref(database, `rech/${adId}`));
   };
 
   window.editAd = async function(adId) {
-    const adSnap = await get(child(ref(database), `ads/${adId}`));
+    const adSnap = await get(child(ref(database), `rech/${adId}`));
     if (adSnap.exists()) {
       const ad = adSnap.val();
       document.getElementById("art-date").value = ad.date;
@@ -139,16 +143,11 @@ const adForm = document.getElementById("article_form");
 });
 
   //toggleBtn Voir plus clicked
-  document.getElementById("recherche-container").addEventListener("click", function (e) {
+  document.getElementById("communique-container").addEventListener("click", function (e) {
   if (e.target.classList.contains("toggle-btn")) {
     const btn = e.target;
-    const content = btn.parentElement.querySelector(".recherche-content");
+    const content = btn.parentElement.querySelector(".article-content");
     content.classList.toggle("expanded");
     btn.textContent = content.classList.contains("expanded") ? "Voir moins" : "Voir plus";
   }
 });
-
-
-  
-  
-        

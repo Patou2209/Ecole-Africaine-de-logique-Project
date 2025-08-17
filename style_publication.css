@@ -1,17 +1,19 @@
-#communique-container, 
-#recherche-container{
+#communique-container{
+  width: 95%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 25px;
   padding: 25px;
+  margin: 20px auto;
 }
 
-#communique-container .article-content,
-#recherche-container .article-content {
+#communique-container .article-content {
   max-height: 60px;
   overflow: hidden;
   transition: 0.4s ease;
-  width: 100%;
+  text-align: justify;
+  color: #3b3b3b;
+  font-size: 15px;
 }
 #communique-container .article-content.expanded {
   max-height: none;
@@ -20,17 +22,22 @@
   width: 100%;
   
 }
+.article-princ {
+  width: 100%;
+}
+.article-princ .article-content {
+  width: 100%;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
 .article-content.expanded {
   max-height: auto;
   transition: 0.4s ease;
   width: 100%;
 }
-.recherche-content.expanded {
-  max-height: auto;
-  transition: 0.4s ease;
-  width: 100%;
-  
-}
+
 
 .expanded {
   max-height: none;
@@ -42,17 +49,13 @@
   font-size: 12px;
   color: #757373;
 }
-.article-princ h2,.rech-princ h2{
+.article-princ h2{
   text-align: left;
   font-size: 17px;
   color: rgb(45, 45, 46);
   margin: 15px 0;
 }
-.article-princ p, .rech-princ p{
-  text-align: justify;
-  color: #3b3b3b;
-  font-size: 15px;
-}
+
 .article-cot{
   width: 40%;
   padding: 10px;

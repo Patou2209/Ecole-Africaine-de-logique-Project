@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-   <head>
+    <head>
         <!-- Encodage & affichage -->
         <meta name="google-site-verification" content="-oDNL01QfVhyI6vf9dCv72QHbOm9kQH1GRgCUCjC7X8" />
         <meta charset="UTF-8">
@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Titre -->
-        <title>École Africaine de Logique et d’Analyse du Langage | Recherche & Publications</title>
+        <title>École Africaine de Logique et d’Analyse du Langage | Recherches</title>
 
         <!-- Meta Description SEO -->
         <meta name="description" content="Plateforme académique dédiée à la recherche, à la formation et à la publication en logique et analyse du langage en Afrique.">
@@ -72,21 +72,20 @@
         </script>
     </head>
 
-
     <body>
 
         <!-- Navigation -->
-       <nav>
+        <nav>
             <img src="images/ECOLE_AFRICAINE_LOGO-removebg-preview.png" alt="">
             <div class="navigation">
                <ul>
                     <i id="menu-close" class="fas fa-times"></i>
                     <li><a href="index.html" >Acceuil</a></li>
-                    <li><a href="about.html" >A propos</a></li>
+                    <li><a href="about.html"  >A propos</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="chercheurs.html">Chercheurs</a></li>
                     <li><a href="contributeur.html" >Contributeurs</a></li>
-                    <li><a href="annonces.html">Annonces</a></li>
+                    <li><a href="annonces.html" >Annonces</a></li>
                     <li><a href="protocol.html" >Protocole de rédaction</a></li>
                     <li><a href="#" class="active-tab">Recherches</a></li> 
                 </ul>
@@ -95,40 +94,32 @@
         </nav>
 
         <!-- Home -->
-        <section id="about-home">
-            <h2>Recherches</h2>
+        <section id="page">
+            
+            <h2>Recherches </h2>
+            
         </section>
 
-        <section id="contact-details" >
+         <section id="contact-details" >
             <div class="details">
                 <p style="text-align: justify;">Fondée en 2022 en République Démocratique du Congo, l’École Africaine de Logique et d’Analyse du Langage (EALAL) est un espace académique et intellectuel dédié à la recherche avancée, à la formation rigoureuse et à la promotion des études en logique et en analyse du langage dans un contexte africain contemporain.
                 Ancrée dans les réalités culturelles et linguistiques du continent, l’École vise à créer une passerelle entre les traditions philosophiques africaines, les sciences du langage, la logique formelle et les enjeux mondiaux du savoir, notamment ceux liés à la rationalité et à l’intelligence artificielle.
                 </p> 
-                
             </div>
             <div class="map">
                 <img src="images/hand-2811686_1280.jpg" width="600" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
             </div>
         </section>
-        
-        <section id="recherche-container"> <!--Sh*t injected--></section>
+
+
+         <div id="communique-container" >  <!--here, are injected data from the DOM--></div>
 
         
         <!-- Registration -->
-         <section id="registration">
-            
-            <div class="form">
-                <h3> Subscrivez à nos Annonces</h3>
-                    <input type="text" placeholder="Votre Nom">
-                    <input type="email" placeholder="Votre Email">
-                <div class="btn">
-                    <a href="#" class="yellow">Soumettre</a>
-                </div>
-                    
-            </div>
-         </section>
+        
 
-       
+        <!-- Profiles -->
+
         <!-- Footer -->
         <footer>
             <section id="footer">
@@ -176,34 +167,19 @@
 
         </footer>
        
-        <script>
-
-            // Navaigation Bar
-            let menuBtn = document.getElementById('menu-btn');
-            let menuClose = document.getElementById('menu-close');
-            
-            menuBtn.addEventListener('click', function() {
-                document.querySelector('.navigation').classList.add('active');
-            });
-            menuClose.addEventListener('click', function() {
-                document.querySelector('.navigation').classList.remove('active');
-            });
-
-            // icone log
-            let icone = document.getElementById("icone-user");
-            icone.addEventListener('click', function(){
-               window.location.href = "connexion.html";
-            })
-
-        </script>
-
-
-       
-        <script type="module">
+       <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
-            import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
+            import {
+            getDatabase,
+            ref,
+            push,
+            onValue,
+            remove,
+            update,
+            get,
+            child
+            } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
 
-            // Configuration Firebase
             const appSettings = {
             databaseURL: "https://ecole-africaine-default-rtdb.asia-southeast1.firebasedatabase.app/",
             apiKey: "AIzaSyBpBDRdbCzQ6KWFkFO2UK8K_rbTbHHCwF0",
@@ -214,22 +190,29 @@
             appId: "1:740167043479:web:78a965e3f34f44920a1cd2"
             };
 
-            // Initialiser Firebase
             const app = initializeApp(appSettings);
             const database = getDatabase(app);
             const adsRef = ref(database, "rech");
 
-            // Afficher les annonces dans le conteneur
+            
+
+            displayAds();
+
             function displayAds() {
-            const adsContainer = document.getElementById("recherche-container");
+            const adsContainer = document.getElementById("communique-container");
+            if (!adsContainer) return;
+
             adsContainer.innerHTML = "";
 
             onValue(adsRef, (snapshot) => {
-                adsContainer.innerHTML = ""; // Vider avant de réafficher
-                snapshot.forEach(childSnap => {
+                adsContainer.innerHTML = "";
+
+                snapshot.forEach((childSnap) => {
                 const ad = childSnap.val();
+                const adId = childSnap.key;
+
                 const adBox = document.createElement("div");
-                adBox.classList.add("rech-princ");
+                adBox.classList.add("article-princ");
                 adBox.innerHTML = `
                     <span>Recherche Publiée le : ${ad.date} </span>
                     <p class="article-type">Type de Recherche : ${ad.tipe}</p>
@@ -243,8 +226,26 @@
             });
             }
 
+        </script>
+        
+        <script>
+
+            // Navaigation Bar
+            let menuBtn = document.getElementById('menu-btn');
+            let menuClose = document.getElementById('menu-close');
+            
+            menuBtn.addEventListener('click', function() {
+                document.querySelector('.navigation').classList.add('active');
+            });
+            menuClose.addEventListener('click', function() {
+                document.querySelector('.navigation').classList.remove('active');
+            });
+
+        </script>
+       
+        <script>
             // Bouton "Voir plus" / "Voir moins"
-            document.getElementById("recherche-container").addEventListener("click", function (e) {
+            document.getElementById("communique-container").addEventListener("click", function (e) {
             if (e.target.classList.contains("toggle-btn")) {
                 const btn = e.target;
                 const content = btn.parentElement.querySelector(".article-content");
@@ -252,11 +253,12 @@
                 btn.textContent = content.classList.contains("expanded") ? "Voir moins" : "Voir plus";
             }
             });
-
-            // Lancer l'affichage
-            displayAds();
-
         </script>
+
+        
+
+
+
     </body>
 
 </html>

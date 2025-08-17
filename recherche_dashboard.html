@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tableau de Bord Principal</title>
+        <title>Tableau de Bord Recherches</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> 
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="style_publication.css">
@@ -25,35 +25,15 @@
                <ul>
                     <i id="menu-close" class="fas fa-times"></i>
                     <li><a href="index.html" >Acceuil</a></li>
-                    <li><a href="dashboard.html" >Tableau de Bord Principal</a></li>
-
+                    <li><a href="dashboard.html">Tableau de Bord Principal</a></li>
                 </ul>
                 <img id="menu-btn" src="images/menu.png" alt="">
             </div>
         </nav>
-
-        <section id="about-home">
-            <h2>Tableau de Bord Recherche</h2>
-        </section>
         
 
         <div class="posting">
             <h3 class="connecteH3">Bienvenue, <span id="user-name"></span> !</h3>
-           
- 
-           <!-- <div class="search">
-                    <i class="fa fa-search" id="search-icon" title="Recherche"></i>
-                    <input type="text" id="search-bar" placeholder="Recherche" class="form-control" >
-                <div class="filtre">
-                    <select id="sort-ads" class="form-control">
-                        <option value="" title="Tous les produits"></option>
-                        <option value="Electronics" title="Produits électroniques">Electronics</option>
-                        <option value="Habillement" title="Vêtements et accessoires">Habillement</option>
-                        <option value="Voiture" title="Véhicules et accessoires">Voiture</option>
-                        <option value="Immobilier" title="Biens immobiliers">Immobilier</option>
-                    </select>
-                </div>
-            </div> -->
 
             <div class="posting-form">
                 <h4 style="text-align: center;"> Publier une Recherche </h4>
@@ -71,7 +51,7 @@
         </div>
 
 
-        <div id="recherche-container" > <!--here, are injected data from the DOM--></div>
+        <div id="communique-container" > <!--here, are injected data from the DOM--></div>
 
         <!-- Footer -->
         <footer>
@@ -120,8 +100,34 @@
 
         </footer>
         <script type="module" src="recherche.js"></script>
-        
+        <script>
 
+            // Navaigation Bar
+            let menuBtn = document.getElementById('menu-btn');
+            let menuClose = document.getElementById('menu-close');
+            
+            menuBtn.addEventListener('click', function() {
+                document.querySelector('.navigation').classList.add('active');
+            });
+            menuClose.addEventListener('click', function() {
+                document.querySelector('.navigation').classList.remove('active');
+            });
 
+            // icone log
+            
+
+        </script>
+        <script>
+            // Bouton "Voir plus" / "Voir moins"
+            document.getElementById("communique-container").addEventListener("click", function (e) {
+            if (e.target.classList.contains("toggle-btn")) {
+                const btn = e.target;
+                const content = btn.parentElement.querySelector(".article-content");
+                content.classList.toggle("expanded");
+                btn.textContent = content.classList.contains("expanded") ? "Voir moins" : "Voir plus";
+            }
+            });
+        </script>
+         
     </body>
 </html>
