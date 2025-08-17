@@ -148,6 +148,7 @@ h4{
     }
     #form-details .people {
       width: 50%;
+      overflow-wrap: break-word;
     }
     #form-details form input,
     #form-details form textarea {
@@ -230,6 +231,7 @@ h4{
       #form-details .people {
         min-width: 100%;
         margin-top: 25px;
+        overflow-wrap: break-word;
           
       }
     }
