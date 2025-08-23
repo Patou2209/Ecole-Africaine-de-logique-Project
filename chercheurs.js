@@ -43,8 +43,10 @@ function init(user) {
     const field = document.getElementById("chercheur-field").value;
     const imageInput = document.getElementById("chercheur-image").files[0];
     const description = document.getElementById("chercheur-description").value;
+    const phone = document.getElementById("chercheur-phone").value;
+    const email = document.getElementById("chercheur-email").value;
 
-    if (!name || !field || !imageInput || !description) {
+    if (!name || !field || !imageInput || !description || !phone || !email) {
       alert("Remplissez toutes les cases svp !");
       return;
     }
@@ -56,6 +58,8 @@ function init(user) {
         field,
         image: reader.result,
         description,
+        phone,
+        email,
         userEmail: user.email,
         createdAt: Date.now()
       };
@@ -98,6 +102,8 @@ function displayAds(user) {
           <h3>${ad.name}</h3>
           <h4>${ad.field}</h4>
           <p>${ad.description}</p>
+          <a href="https://wa.me/${ad.phone}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:${ad.email}"><i class="fas fa-envelope"></i></a>
           <button class="normal" id="green" onclick="editAd('${adId}')">Modifier</button>
           <button class="normal" id="red" onclick="deleteAd('${adId}')">Supprimer</button>
         `;
@@ -123,6 +129,8 @@ window.editAd = async function (adId) {
       document.getElementById("chercheur-name").value = ad.name;
       document.getElementById("chercheur-field").value = ad.field;
       document.getElementById("chercheur-description").value = ad.description;
+      document.getElementById("chercheur-phone").value = ad.phone;
+      document.getElementById("chercheur-email").value = ad.email;
       editingAdId = adId;
       window.scrollTo({ top: 0, behavior: "smooth" });
     }

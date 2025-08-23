@@ -182,6 +182,18 @@
 #contributeur-container .profil p{
   text-align: justify;
 }
+#chercheur-container .profil i{
+  padding: 10px 13px;
+  border: 1px solid rgb(21, 21, 100 );
+  border-radius: 50%;
+  cursor: pointer;
+  color: rgb(21, 21, 100);
+  transition: 0.4s ease-in-out;
+}
+#chercheur-container .profil i:hover{
+  background-color: rgb(21, 21, 100);
+  color: white;
+}
 .active-tab {
   color: #FDC93B !important;
 }
