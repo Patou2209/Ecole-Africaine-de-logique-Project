@@ -35,21 +35,29 @@ onAuthStateChanged(auth, (user) => {
   const adForm = document.getElementById("article_form");
 
   adForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const date = document.getElementById("annonce-date").value;
-    const title = document.getElementById("annonce-title").value;
-    const description = document.getElementById("annonce-description").value;
+  const date = document.getElementById("annonce-date").value;
+  const title = document.getElementById("annonce-title").value;
+  const imageInput = document.getElementById("annonce-image").files[0];
+  const description = document.getElementById("annonce-description").value;
 
-    const userId = auth.currentUser.uid;
-    const userSnap = await get(child(ref(database), `users/${userId}`));
-    // const number = userSnap.exists() ? userSnap.val().number || "" : "";
+  if (!date || !title || !imageInput || !description) {
+      alert("Remplissez toutes les cases svp !");
+      return;
+    }
 
+  const userId = auth.currentUser.uid;
+  const userSnap = await get(child(ref(database), `users/${userId}`));
+
+  // Fonction qui sauve l'annonce (avec ou sans image)
+  const saveAd = async (imageData) => {
     const ad = {
       date,
       title,
       description,
       userEmail: auth.currentUser.email,
+      image: imageData || "",   // si pas d'image → chaîne vide
       createdAt: Date.now()
     };
 
@@ -60,13 +68,25 @@ onAuthStateChanged(auth, (user) => {
       } else {
         await push(adsRef, ad);
       }
-
       adForm.reset();
       displayAds();
     } catch (error) {
       console.error("Erreur lors de la sauvegarde :", error);
     }
-  });
+  };
+
+  // Si l’utilisateur a choisi une image → FileReader
+  if (imageInput) {
+    const reader = new FileReader();
+    reader.onload = () => saveAd(reader.result); // Base64
+    reader.readAsDataURL(imageInput);
+  } else {
+    // Pas d'image
+    saveAd("");
+  }
+});
+
+  
 });
 
 function displayAds() {
@@ -89,6 +109,7 @@ function displayAds() {
           <span>Annonce Publiée le : ${ad.date}</span>
           <h2>${ad.title}</h2>
           <p class="article-content">${ad.description}</p>
+          <img src="${ad.image}" alt="${ad.title}" class="article-image">
           <button class="toggle-btn">Voir plus</button>
           <button class="normal" id="green" onclick="editAd('${adId}')">Modifier</button>
           <button class="normal" id="red" onclick="deleteAd('${adId}')">Supprimer</button>
@@ -115,6 +136,7 @@ window.editAd = async function (adId) {
       const ad = adSnap.val();
       document.getElementById("annonce-date").value = ad.date;
       document.getElementById("annonce-title").value = ad.title;
+      document.getElementById("annonce-image").value = ad.image;
       document.getElementById("annonce-description").value = ad.description;
       editingAdId = adId;
       window.scrollTo({ top: 0, behavior: "smooth" });

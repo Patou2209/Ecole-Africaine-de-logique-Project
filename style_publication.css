@@ -66,6 +66,10 @@
   height: 200px;
   margin-top:15px;
 }
+.article-image {
+  width: 100%;
+  height: auto;
+}
 .article-cot h4{
   padding: 15px 0;
 }
