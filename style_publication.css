@@ -14,6 +14,8 @@
   text-align: justify;
   color: #3b3b3b;
   font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 1rem;
 }
 #communique-container .article-content.expanded {
   max-height: none;

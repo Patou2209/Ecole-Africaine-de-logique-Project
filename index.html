@@ -118,7 +118,9 @@
             </div>
         </section>
         
+        <section id="communique-container"> Téléchargement en Cours... <!--Sh*t injected--></section>
         <section id="article-container"> Téléchargement en Cours... <!--Sh*t injected--></section>
+        
 
         
         <!-- Registration -->
@@ -250,53 +252,37 @@
         </script>
 
 
-       <!-- <script>
-            //Drop down script
-            document.addEventListener("DOMContentLoaded", function () {
-                const dropdownToggle = document.querySelector(".dropdown-toggle");
-                const dropdown = document.querySelector(".dropdown");
-
-                dropdownToggle.addEventListener("click", function (e) {
-                    e.preventDefault(); // Empêche le lien de rediriger
-                    dropdown.classList.toggle("active");
-                });
-
-                // Fermer le dropdown si on clique ailleurs
-                window.addEventListener("click", function (e) {
-                    if (!dropdown.contains(e.target)) {
-                        dropdown.classList.remove("active");
-                    }
-                });
-            });
-        </script> -->
+       
         <script type="module">
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
-            import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
 
-            // Configuration Firebase
-            const appSettings = {
-            databaseURL: "https://ecole-africaine-default-rtdb.asia-southeast1.firebasedatabase.app/",
-            apiKey: "AIzaSyBpBDRdbCzQ6KWFkFO2UK8K_rbTbHHCwF0",
-            authDomain: "ecole-africaine.firebaseapp.com",
-            projectId: "ecole-africaine",
-            storageBucket: "ecole-africaine.firebasestorage.app",
-            messagingSenderId: "740167043479",
-            appId: "1:740167043479:web:78a965e3f34f44920a1cd2"
-            };
+    // Configuration Firebase
+    const appSettings = {
+        databaseURL: "https://ecole-africaine-default-rtdb.asia-southeast1.firebasedatabase.app/",
+        apiKey: "AIzaSyBpBDRdbCzQ6KWFkFO2UK8K_rbTbHHCwF0",
+        authDomain: "ecole-africaine.firebaseapp.com",
+        projectId: "ecole-africaine",
+        storageBucket: "ecole-africaine.firebasestorage.app",
+        messagingSenderId: "740167043479",
+        appId: "1:740167043479:web:78a965e3f34f44920a1cd2"
+    };
 
-            // Initialiser Firebase
-            const app = initializeApp(appSettings);
-            const database = getDatabase(app);
-            const adsRef = ref(database, "ads");
+    // Initialiser Firebase
+    const app = initializeApp(appSettings);
+    const database = getDatabase(app);
 
-            // Afficher les annonces dans le conteneur
-            function displayAds() {
-            const adsContainer = document.getElementById("article-container");
-            adsContainer.innerHTML = "";
+    // --- Chargement des ARTICLES (chemin : "ads")
+    const articleRef = ref(database, "ads");
+    const articleContainer = document.getElementById("article-container");
 
-            onValue(adsRef, (snapshot) => {
-                adsContainer.innerHTML = ""; // Vider avant de réafficher
-                snapshot.forEach(childSnap => {
+    function displayArticles() {
+        if (!articleContainer) return;
+        articleContainer.innerHTML = "Chargement...";
+
+        onValue(articleRef, (snapshot) => {
+            articleContainer.innerHTML = "";
+            snapshot.forEach(childSnap => {
                 const ad = childSnap.val();
                 const adBox = document.createElement("div");
                 adBox.classList.add("article-princ");
@@ -307,25 +293,55 @@
                     <p class="pdf_link"><a href="${ad.pdf}" target="_blank">Voir le PDF</a></p>
                     <button class="toggle-btn">Voir plus</button>
                 `;
-                adsContainer.appendChild(adBox);
-                });
+                articleContainer.appendChild(adBox);
             });
-            }
+        });
+    }
 
-            // Bouton "Voir plus" / "Voir moins"
-            document.getElementById("article-container").addEventListener("click", function (e) {
-            if (e.target.classList.contains("toggle-btn")) {
-                const btn = e.target;
-                const content = btn.parentElement.querySelector(".article-content");
-                content.classList.toggle("expanded");
-                btn.textContent = content.classList.contains("expanded") ? "Voir moins" : "Voir plus";
-            }
+    // --- Chargement des ANNONCES (chemin : "ann")
+    const annonceRef = ref(database, "ann");
+    const annonceContainer = document.getElementById("communique-container");
+
+    function displayAnnonces() {
+        if (!annonceContainer) return;
+        annonceContainer.innerHTML = "Chargement...";
+
+        onValue(annonceRef, (snapshot) => {
+            annonceContainer.innerHTML = "";
+            snapshot.forEach(childSnap => {
+                const ann = childSnap.val();
+                const annBox = document.createElement("div");
+                annBox.classList.add("article-princ");
+                annBox.innerHTML = `
+                    <span>Annonce Publiée le : ${ann.date}</span>
+                    <h2>${ann.title}</h2>
+                    <p class="article-content">${ann.description}</p>
+                    <button class="toggle-btn">Voir plus</button>
+                    <img src="${ann.image}" alt="${ann.title}" class="article-image">
+                    
+                `;
+                annonceContainer.appendChild(annBox);
             });
+        });
+    }
 
-            // Lancer l'affichage
-            displayAds();
+    // --- Gestion des boutons "Voir plus" / "Voir moins"
+    document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("toggle-btn")) {
+            const btn = e.target;
+            const content = btn.parentElement.querySelector(".article-content");
+            content.classList.toggle("expanded");
+            btn.textContent = content.classList.contains("expanded") ? "Voir moins" : "Voir plus";
+        }
+    });
 
-        </script>
+    // --- Lancer le chargement
+    displayArticles();
+    displayAnnonces();
+
+</script>
+
+
     </body>
 
 </html>
