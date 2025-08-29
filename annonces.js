@@ -129,19 +129,18 @@ window.deleteAd = async function (adId) {
   }
 };
 
-window.editAd = async function (adId) {
-  try {
+window.editAd = async function(adId) {
     const adSnap = await get(child(ref(database), `ann/${adId}`));
     if (adSnap.exists()) {
       const ad = adSnap.val();
       document.getElementById("annonce-date").value = ad.date;
       document.getElementById("annonce-title").value = ad.title;
-      document.getElementById("annonce-image").value = ad.image;
+      // NE PAS tenter de pré-remplir le champ fichier
+      // document.getElementById("annonce-image").value = ad.image;
       document.getElementById("annonce-description").value = ad.description;
       editingAdId = adId;
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  } catch (error) {
-    console.error("Erreur lors du chargement de l'annonce :", error);
-  }
-};
+  };
+
+  
