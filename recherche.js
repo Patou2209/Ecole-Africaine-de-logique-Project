@@ -90,7 +90,7 @@ const adForm = document.getElementById("article_form");
   });
 
 function displayAds() {
-  const adsContainer = document.getElementById("communique-container");
+  const adsContainer = document.getElementById("recherches-container");
   adsContainer.innerHTML = "";
 
   onValue(adsRef, (snapshot) => {
@@ -143,7 +143,7 @@ window.deleteAd = async function(adId) {
 });
 
   //toggleBtn Voir plus clicked
-  document.getElementById("communique-container").addEventListener("click", function (e) {
+  document.getElementById("recherches-container").addEventListener("click", function (e) {
   if (e.target.classList.contains("toggle-btn")) {
     const btn = e.target;
     const content = btn.parentElement.querySelector(".article-content");

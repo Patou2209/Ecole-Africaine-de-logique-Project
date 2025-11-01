@@ -112,7 +112,7 @@
         </section>
 
 
-         <div id="communique-container" >  <!--here, are injected data from the DOM--></div>
+         <div id="recherches-container" >  <!--here, are injected data from the DOM--></div>
 
         
         <!-- Registration -->
@@ -199,7 +199,7 @@
             displayAds();
 
             function displayAds() {
-            const adsContainer = document.getElementById("communique-container");
+            const adsContainer = document.getElementById("recherches-container");
             if (!adsContainer) return;
 
             adsContainer.innerHTML = "";
@@ -245,7 +245,7 @@
        
         <script>
             // Bouton "Voir plus" / "Voir moins"
-            document.getElementById("communique-container").addEventListener("click", function (e) {
+            document.getElementById("recherches-container").addEventListener("click", function (e) {
             if (e.target.classList.contains("toggle-btn")) {
                 const btn = e.target;
                 const content = btn.parentElement.querySelector(".article-content");
