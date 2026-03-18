@@ -49,11 +49,6 @@
     <priority>0.6</priority>
   </url>
 
-  <url>
-    <loc>https://ecoleafricainedelogiqueucc.net/connexion.html</loc>
-    <lastmod>2026-03-18</lastmod>
-    <priority>0.5</priority>
-  </url>
 
   <url>
     <loc>https://ecoleafricainedelogiqueucc.net/contributeur.html</loc>
@@ -64,7 +59,7 @@
   <url>
     <loc>https://ecoleafricainedelogiqueucc.net/contributeur_dash.html</loc>
     <lastmod>2026-03-18</lastmod>
-
+q
 
   <url>
     <loc>https://ecoleafricainedelogiqueucc.net/protocol.html</loc>
@@ -76,12 +71,6 @@
     <loc>https://ecoleafricainedelogiqueucc.net/recherche.html</loc>
     <lastmod>2026-03-18</lastmod>
     <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ecoleafricainedelogiqueucc.net/recherche_dashboard.html</loc>
-    <lastmod>2026-03-18</lastmod>
-    <priority>0.5</priority>
   </url>
 
 </urlset>
